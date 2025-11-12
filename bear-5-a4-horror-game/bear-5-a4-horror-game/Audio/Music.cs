@@ -16,10 +16,10 @@ namespace MohawkGame2D
         Music BGM2 = Audio.LoadMusic("");
         Music BGM3 = Audio.LoadMusic("");
         Music BGM4 = Audio.LoadMusic("");
-        Music sfx1 = Audio.LoadSound("");
-        Music sfx2 = Audio.LoadSound("");
-        Music sfx3 = Audio.LoadSound("");
-        Music sfx4 = Audio.LoadSound("");
+        Sound sfx1 = Audio.LoadSound("");
+        Sound sfx2 = Audio.LoadSound("");
+        Sound sfx3 = Audio.LoadSound("");
+        Sound sfx4 = Audio.LoadSound("");
         public void Backgroundmusic()
         {
             
