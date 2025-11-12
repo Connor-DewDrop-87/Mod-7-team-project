@@ -10,7 +10,7 @@ namespace MohawkGame2D
 {
     public class OST
     {
-
+    
         // Place your variables here:
         Music BGM1 = Audio.LoadMusic("");
         Music BGM2 = Audio.LoadMusic("");
@@ -20,7 +20,8 @@ namespace MohawkGame2D
         Sound sfx2 = Audio.LoadSound("");
         Sound sfx3 = Audio.LoadSound("");
         Sound sfx4 = Audio.LoadSound("");
-        public void Backgroundmusic()
+
+        public void BackgroundMusic()
         {
             
         }
