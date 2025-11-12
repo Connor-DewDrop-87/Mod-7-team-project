@@ -30,7 +30,7 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            Music.Audio();
+            Music.BackgroundMusic();
             Camera.CameraHud();
             Camera.CameraSwitch();
             ScreenPosition = Camera.ShareScreenPosition();
