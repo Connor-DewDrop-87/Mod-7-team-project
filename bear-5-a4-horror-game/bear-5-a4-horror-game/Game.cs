@@ -11,8 +11,8 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-
-
+        Direction Camera = new Direction();
+        int ScreenPosition;
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -27,7 +27,10 @@ namespace MohawkGame2D
         /// </summary>
         public void Update()
         {
-
+            Window.ClearBackground(Color.OffWhite);
+            Camera.CameraHud();
+            Camera.CameraSwitch();
+            ScreenPosition = Camera.ShareScreenPosition();
         }
     }
 
