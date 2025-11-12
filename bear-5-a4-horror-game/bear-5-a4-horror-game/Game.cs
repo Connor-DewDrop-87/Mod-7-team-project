@@ -11,7 +11,7 @@ namespace MohawkGame2D
     public class Game
     {
         // Place your variables here:
-
+        OST Music = new OST();
 
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -27,7 +27,8 @@ namespace MohawkGame2D
         /// </summary>
         public void Update()
         {
-
+            Window.ClearBackground(Color.OffWhite);
+            Music.Audio();
         }
     }
 
