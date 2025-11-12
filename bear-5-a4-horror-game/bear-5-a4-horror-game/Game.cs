@@ -13,6 +13,8 @@ namespace MohawkGame2D
         // Place your variables here:
         OST Music = new OST();
 
+        Direction Camera = new Direction();
+        int ScreenPosition;
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -29,6 +31,9 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
             Music.Audio();
+            Camera.CameraHud();
+            Camera.CameraSwitch();
+            ScreenPosition = Camera.ShareScreenPosition();
         }
     }
 
