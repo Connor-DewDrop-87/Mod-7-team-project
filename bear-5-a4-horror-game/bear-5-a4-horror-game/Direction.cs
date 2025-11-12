@@ -15,7 +15,7 @@ namespace MohawkGame2D
         
         string[] currentDirection =
         {
-            "North","East","South","West"
+            "Office","HallWayC","OptionalRoomB", "SenatorContainment","OptionalRoomA", "Vent", "Hallway A"
         };
 
         public void CameraHud()
@@ -36,7 +36,7 @@ namespace MohawkGame2D
                 // Loop camera back to west position
                 if (currentCamera < 0)
                 {
-                    currentCamera = 3;
+                    currentCamera = 6;
                 }
             }
             // Turn Camera Right
@@ -44,7 +44,7 @@ namespace MohawkGame2D
             {
                 currentCamera++;
                 // Loop camera back to north position
-                if (currentCamera > 3)
+                if (currentCamera > 6)
                 {
                     currentCamera = 0;
                 }
