@@ -31,7 +31,7 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
             // Background Music
-            Music.Audio();
+            Music.Backgroundmusic();
             // Camera Directions
             Camera.CameraHud();
             Camera.CameraSwitch();

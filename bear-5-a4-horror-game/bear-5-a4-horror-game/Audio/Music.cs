@@ -10,32 +10,19 @@ namespace MohawkGame2D
 {
     public class OST
     {
-        public void setup()
-        {
-            BGM1 = Audio.loadMusic("");
-            BGM2 = Audio.loadMusic("");
-            BGM3 = Audio.loadMusic("");
-            BGM4 = Audio.loadMusic("");
-            sfx1 = Audio.loadSouhnd("");
-            sfx2 = Audio.loadSound("");
-            sfx3 = Audio.loadSound("");
-            sfx4 = Audio.loadSound("");
 
-            BGM1.Looping = true;
-            BGM2.Looping = true;
-        }
         // Place your variables here:
-        Music BGM1;
-        Music BGM2;
-        Music BGM3;
-        Music BGM4;
-        Music sfx1;
-        Music sfx2;
-        Music sfx3;
-        Music sfx4;
-        public void Audio()
+        Music BGM1 = Audio.LoadMusic("");
+        Music BGM2 = Audio.LoadMusic("");
+        Music BGM3 = Audio.LoadMusic("");
+        Music BGM4 = Audio.LoadMusic("");
+        Music sfx1 = Audio.LoadSound("");
+        Music sfx2 = Audio.LoadSound("");
+        Music sfx3 = Audio.LoadSound("");
+        Music sfx4 = Audio.LoadSound("");
+        public void Backgroundmusic()
         {
-
+            
         }
     }
 }
