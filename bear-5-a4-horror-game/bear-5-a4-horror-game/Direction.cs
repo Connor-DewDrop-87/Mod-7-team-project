@@ -12,6 +12,7 @@ namespace MohawkGame2D
     {
         // 0 is north, 1 is east, 2 is south, and 3 is west
         int currentCamera = 0;
+        
         string[] currentDirection =
         {
             "North","East","South","West"
@@ -19,14 +20,18 @@ namespace MohawkGame2D
 
         public void CameraHud()
         {
+            // Blocks for turning directions
             Draw.Rectangle(new Vector2(10, 300), new Vector2(50));
             Draw.Rectangle(new Vector2(340, 300), new Vector2(50));
+            // Display Direction in Text
             Text.Draw($"{currentDirection[currentCamera]}", new Vector2(0, 0));
         }
         public void CameraSwitch()
         {
+            // Turn Camera Left
             if (Input.IsKeyboardKeyPressed(KeyboardInput.A))
             {
+               
                 currentCamera--;
                 // Loop camera back to west position
                 if (currentCamera < 0)
@@ -34,6 +39,7 @@ namespace MohawkGame2D
                     currentCamera = 3;
                 }
             }
+            // Turn Camera Right
             if (Input.IsKeyboardKeyPressed(KeyboardInput.D))
             {
                 currentCamera++;

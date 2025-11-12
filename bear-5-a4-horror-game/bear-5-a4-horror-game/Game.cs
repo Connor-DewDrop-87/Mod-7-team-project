@@ -30,9 +30,12 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
+            // Background Music
             Music.Audio();
+            // Camera Directions
             Camera.CameraHud();
             Camera.CameraSwitch();
+            // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Camera.ShareScreenPosition();
         }
     }
