@@ -12,7 +12,6 @@ namespace MohawkGame2D
     {
         // 0 is north, 1 is east, 2 is south, and 3 is west
         int currentCamera = 0;
-        
         string[] currentDirection =
         {
             "Office","HallWayC","OptionalRoomB", "SenatorContainment","OptionalRoomA", "Vent", "Hallway A"
