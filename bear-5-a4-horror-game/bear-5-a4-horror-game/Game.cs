@@ -12,8 +12,12 @@ namespace MohawkGame2D
     {
         // Place your variables here:
         OST Music = new OST();
-
         Direction Camera = new Direction();
+        bool isAlive = true;
+        // Open is false, Closed is true
+        bool doorShut = false;
+        // Power on is true, Power off is false
+        bool powerIsOn = true;
         int ScreenPosition;
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -35,6 +39,27 @@ namespace MohawkGame2D
             Camera.CameraSwitch();
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Camera.ShareScreenPosition();
+            ShutOrOpenDoor();
+        }
+        public void ShutOrOpenDoor()
+        {
+            // Door State Checker
+            if (doorShut)
+            {
+                Draw.Rectangle(new Vector2(Window.Width / 2, Window.Height / 2), new Vector2(50, 50));
+            }
+            if (!doorShut)
+            {
+                Draw.Rectangle(new Vector2(Window.Width / 2, Window.Height / 2), new Vector2(50, 20));
+            }
+            // Door on/off switch
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.W))
+            {
+                if (powerIsOn == true)
+                {
+                    doorShut = !doorShut;
+                }
+            }
         }
     }
 
