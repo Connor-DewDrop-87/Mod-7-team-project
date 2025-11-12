@@ -49,6 +49,7 @@ namespace MohawkGame2D
                     currentCamera = 0;
                 }
             }
+            
         }
         public int ShareScreenPosition()
         {

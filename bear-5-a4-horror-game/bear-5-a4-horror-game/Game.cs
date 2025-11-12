@@ -12,8 +12,10 @@ namespace MohawkGame2D
     {
         // Place your variables here:
         OST Music = new OST();
-
         Direction Camera = new Direction();
+        bool isAlive = true;
+        // Open is false, Closed is true
+        bool doorShut = false;
         int ScreenPosition;
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -31,12 +33,20 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
             // Background Music
-            Music.Audio();
+            Music.Backgroundmusic();
             // Camera Directions
             Camera.CameraHud();
             Camera.CameraSwitch();
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Camera.ShareScreenPosition();
+        }
+        public bool ShareDoorState()
+        {
+            if (doorShut)
+            {
+                return true;
+            }
+            return false;
         }
     }
 
