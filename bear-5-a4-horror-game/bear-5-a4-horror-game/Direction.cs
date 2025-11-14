@@ -19,9 +19,6 @@ namespace MohawkGame2D
 
         public void CameraHud()
         {
-            // Blocks for turning directions
-            Draw.Rectangle(new Vector2(10, 300), new Vector2(50));
-            Draw.Rectangle(new Vector2(340, 300), new Vector2(50));
             // Display Direction in Text
             Text.Draw($"{currentDirection[currentCamera]}", new Vector2(0, 0));
         }

@@ -18,6 +18,7 @@ namespace MohawkGame2D
         bool doorShut = false;
         // Power on is true, Power off is false
         bool powerIsOn = true;
+        Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -45,7 +46,10 @@ namespace MohawkGame2D
             if (ScreenPosition == 0)
             {
                 // Door
-                ShutOrOpenDoor();
+                CreateDoor(new Vector2(200,60), new Vector2(200,180));
+                // Desk
+                Draw.FillColor = brown;
+                Draw.Rectangle(new Vector2(20,300), new Vector2(360,60));
             }
             // HallWayC Screen
             if (ScreenPosition == 1)
@@ -78,16 +82,23 @@ namespace MohawkGame2D
 
             }
         }
-        public void ShutOrOpenDoor()
+        public void CreateDoor(Vector2 doorCentreUpper,Vector2 doorCentreLower)
         {
+            Draw.FillColor = Color.LightGray;
             // Door State Checker
             if (doorShut)
             {
-                Draw.Rectangle(new Vector2(Window.Width / 2, Window.Height / 2), new Vector2(50, 50));
+                // Door Right side
+                Draw.Quad(doorCentreUpper, doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower);
+                // Door Left Side
+                Draw.Quad(doorCentreUpper, doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower);
             }
             if (!doorShut)
             {
-                Draw.Rectangle(new Vector2(Window.Width / 2, Window.Height / 2), new Vector2(50, 20));
+                // Door Right side
+                Draw.Quad(doorCentreUpper+new Vector2(70,0), doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower + new Vector2(70, 0));
+                // Door Left Side
+                Draw.Quad(doorCentreUpper - new Vector2(70, 0), doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower - new Vector2(70, 0));
             }
             // Door on/off switch
             if (Input.IsKeyboardKeyPressed(KeyboardInput.W))
