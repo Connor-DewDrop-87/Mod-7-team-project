@@ -40,6 +40,8 @@ namespace MohawkGame2D
             Camera.CameraSwitch();
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Camera.ShareScreenPosition();
+            // Make walls of the screen based on ScreenPosition
+            CreateWalls();
             // Office Screen
             if (ScreenPosition == 0)
             {
@@ -105,6 +107,48 @@ namespace MohawkGame2D
                 {
                     doorShut = !doorShut;
                 }
+            }
+        }
+        public void CreateWalls()
+        {
+            // Office Screen
+            if (ScreenPosition == 0)
+            {
+                Draw.Line(new Vector2(0, 260),new Vector2(80,180));
+                Draw.Line(new Vector2(400, 260),new Vector2(320,180));
+                Draw.Line(new Vector2(80, 0),new Vector2(80,180));
+                Draw.Line(new Vector2(320, 0),new Vector2(320,180));
+                Draw.Line(new Vector2(80, 180), new Vector2(320,180));
+            }
+            // HallWayC Screen
+            if (ScreenPosition == 1)
+            {
+
+            }
+            // OptionalRoomB Screen
+            if (ScreenPosition == 2)
+            {
+
+            }
+            // SenatorContainment Screen
+            if (ScreenPosition == 3)
+            {
+
+            }
+            // OptionalRoomA Screen
+            if (ScreenPosition == 4)
+            {
+
+            }
+            // Vent Screen
+            if (ScreenPosition == 5)
+            {
+
+            }
+            // Hallway A Screen
+            if (ScreenPosition == 6)
+            {
+
             }
         }
     }
