@@ -20,7 +20,7 @@ namespace MohawkGame2D
         public void CameraHud()
         {
             // Display Direction in Text
-            Text.Draw($"{currentDirection[currentCamera]}", new Vector2(0, 0));
+            Text.Draw($"{currentDirection[currentCamera]}", new Vector2(150, 0));
         }
         public void CameraSwitch()
         {
