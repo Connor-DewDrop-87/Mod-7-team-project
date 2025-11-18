@@ -62,7 +62,8 @@ namespace MohawkGame2D
             if (ScreenPosition == 0)
             {
                 // Door
-                MainDoor.CreateDoor(new Vector2(200,60),new Vector2(200,180));
+                MainDoor.CreateDoor(new Vector2(200,60),new Vector2(200,180),new Vector2(80,0),new Vector2(80,0));
+                MainDoor.DoorToggle();
                 // Desk
                 Draw.FillColor = brown;
                 Draw.Rectangle(new Vector2(20,300), new Vector2(360,60));

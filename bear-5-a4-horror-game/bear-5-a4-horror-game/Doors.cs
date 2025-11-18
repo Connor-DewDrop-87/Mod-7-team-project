@@ -11,35 +11,46 @@ namespace MohawkGame2D
     public class Doors
     {
         // Open is false, Closed is true
-        bool doorShut = false;
+        bool doorClosed = false;
         // Power on is true, Power off is false
         bool powerIsOn = true;
-        public void CreateDoor(Vector2 doorCentreUpper, Vector2 doorCentreLower)
+        public void CreateDoor(Vector2 doorCentreUpper, Vector2 doorCentreLower, Vector2 offSetR, Vector2 offSetL)
         {
             Draw.FillColor = Color.LightGray;
             // Door State Checker
-            if (doorShut)
+            if (doorClosed)
             {
                 // Door Right side
-                Draw.Quad(doorCentreUpper, doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower);
+                Draw.Quad(doorCentreUpper, doorCentreUpper + offSetR, doorCentreLower + offSetR, doorCentreLower);
                 // Door Left Side
-                Draw.Quad(doorCentreUpper, doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower);
+                Draw.Quad(doorCentreUpper, doorCentreUpper - offSetL, doorCentreLower - offSetL, doorCentreLower);
             }
-            if (!doorShut)
+            if (!doorClosed)
             {
                 // Door Right side
-                Draw.Quad(doorCentreUpper + new Vector2(70, 0), doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower + new Vector2(70, 0));
+                Draw.Quad(doorCentreUpper + offSetR - new Vector2(10,0), doorCentreUpper + offSetR, doorCentreLower + offSetR, doorCentreLower + offSetR - new Vector2(10, 0));
                 // Door Left Side
-                Draw.Quad(doorCentreUpper - new Vector2(70, 0), doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower - new Vector2(70, 0));
+                Draw.Quad(doorCentreUpper - offSetL + new Vector2(10, 0), doorCentreUpper - offSetL, doorCentreLower - offSetL, doorCentreLower - offSetL + new Vector2(10, 0));
             }
-            // Door on/off switch
+        }
+        public void DoorToggle()
+        {
             if (Input.IsKeyboardKeyPressed(KeyboardInput.W))
             {
                 if (powerIsOn == true)
                 {
-                    doorShut = !doorShut;
+                    doorClosed = !doorClosed;
                 }
             }
+        }
+        public bool CheckDoorStatus()
+        {
+            if (doorClosed == true)
+            {
+                return true;
+            }
+            return false;
+
         }
     }
 }
