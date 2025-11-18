@@ -40,7 +40,7 @@ namespace MohawkGame2D
             // Make walls of the screen based on ScreenPosition
             CreateWalls();
             // Background Music
-            Music.Backgroundmusic();
+            Music.BackgroundMusic();
             isAlive = Enemy.HasNotKilledPlayer();
             if (isAlive == true)
             {
