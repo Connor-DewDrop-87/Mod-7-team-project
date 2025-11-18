@@ -11,16 +11,18 @@ namespace MohawkGame2D
     public class Senator
     {
         Camera Camera = new Camera();
+        Doors DoorCheck = new Doors();
         int cameraPosition;
         int senatorScreen=3;
         Vector2 senatorPosition = new Vector2(100,100);
-        float senatorMoveTick=0;
+        float senatorMoveTick=99;
         bool isPlayerAlive = true;
-        Texture2D senator;
+        bool doorClosed;
+        Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
         
         public void DrawSenator()
         {
-            Text.Draw($"{senatorMoveTick}", new Vector2(150, 150));
+            Text.Draw($"{senatorMoveTick}", new Vector2(0, 0));
             // Player can only switch camera while alive
             if (isPlayerAlive == true)
             {
@@ -31,19 +33,27 @@ namespace MohawkGame2D
             // Draw Senator if the Player can see them
             if (cameraPosition == senatorScreen)
             {
-                senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
                 Graphics.Draw(senator, senatorPosition);
             }
         }
         public void MoveSenator()
         {
+            doorClosed = DoorCheck.CheckDoorStatus();
+            Text.Draw($"{doorClosed}", new Vector2(0, 200));
             if (isPlayerAlive==true)
             {
                 senatorMoveTick += Random.Integer(5, 50)*Time.DeltaTime;
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;
-                    senatorScreen = Random.Integer(0, 6);
+                    if (doorClosed==true)
+                    {
+                        senatorScreen = Random.Integer(1, 1);
+                    }
+                    else
+                    {
+                        senatorScreen = Random.Integer(0, 0);
+                    }     
                 }
             }
         }
