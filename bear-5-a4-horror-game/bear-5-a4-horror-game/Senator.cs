@@ -27,7 +27,7 @@ namespace MohawkGame2D
             // Draw Senator if the Player can see them
             if (cameraPosition == senatorscreen)
             {
-                Draw.Rectangle(new Vector2(200, 200), new Vector2(20));
+                
             }
         }
         public bool HasNotKilledPlayer()
