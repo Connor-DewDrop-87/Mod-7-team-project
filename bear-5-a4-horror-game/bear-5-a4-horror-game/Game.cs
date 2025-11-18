@@ -13,7 +13,7 @@ namespace MohawkGame2D
     {
         // Place your variables here:
         OST Music = new OST();
-        Direction Camera = new Direction();
+        Camera Player = new Camera();
         Senator Enemy = new Senator();
         // Open is false, Closed is true
         bool doorShut = false;
@@ -40,14 +40,12 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            // Make walls of the screen based on ScreenPosition
-            CreateWalls();
             // Background Music
             Music.BackgroundMusic();
             isAlive = Enemy.HasNotKilledPlayer();
             if (isAlive == true)
             {
-                Camera.CameraPosition();
+                Player.CameraPosition();
             }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             if (isAlive == false)
@@ -57,10 +55,11 @@ namespace MohawkGame2D
             }
             else
             {
-                ScreenPosition = Camera.ShareScreenPosition();
+                ScreenPosition = Player.ShareScreenPosition();
             }
             Enemy.DeathToggle();
-            // Draw Enemy Senator
+            // Draw and Update Movement of Senator
+            Enemy.MoveSenator();
             Enemy.DrawSenator();
             // Office Screen
             if (ScreenPosition == 0)
@@ -70,6 +69,12 @@ namespace MohawkGame2D
                 // Desk
                 Draw.FillColor = brown;
                 Draw.Rectangle(new Vector2(20,300), new Vector2(360,60));
+                // Wall outlines to add depth
+                Draw.Line(new Vector2(0, 260), new Vector2(80, 180));
+                Draw.Line(new Vector2(400, 260), new Vector2(320, 180));
+                Draw.Line(new Vector2(80, 0), new Vector2(80, 180));
+                Draw.Line(new Vector2(320, 0), new Vector2(320, 180));
+                Draw.Line(new Vector2(80, 180), new Vector2(320, 180));
             }
             // HallWayC Screen
             if (ScreenPosition == 1)
@@ -137,48 +142,7 @@ namespace MohawkGame2D
                 }
             }
         }
-        public void CreateWalls()
-        {
-            // Office Screen
-            if (ScreenPosition == 0)
-            {
-                Draw.Line(new Vector2(0, 260),new Vector2(80,180));
-                Draw.Line(new Vector2(400, 260),new Vector2(320,180));
-                Draw.Line(new Vector2(80, 0),new Vector2(80,180));
-                Draw.Line(new Vector2(320, 0),new Vector2(320,180));
-                Draw.Line(new Vector2(80, 180), new Vector2(320,180));
-            }
-            // HallWayC Screen
-            if (ScreenPosition == 1)
-            {
-
-            }
-            // OptionalRoomB Screen
-            if (ScreenPosition == 2)
-            {
-
-            }
-            // SenatorContainment Screen
-            if (ScreenPosition == 3)
-            {
-
-            }
-            // OptionalRoomA Screen
-            if (ScreenPosition == 4)
-            {
-
-            }
-            // Vent Screen
-            if (ScreenPosition == 5)
-            {
-
-            }
-            // Hallway A Screen
-            if (ScreenPosition == 6)
-            {
-
-            }
-        }
+        
         
     }
 
