@@ -15,6 +15,8 @@ namespace MohawkGame2D
         int senatorscreen=3;
         Vector2 senatorPosition;
         bool isPlayerAlive = true;
+        Texture2D senator;
+        
         public void DrawSenator()
         {
             // Player can only switch camera while alive
@@ -27,6 +29,9 @@ namespace MohawkGame2D
             // Draw Senator if the Player can see them
             if (cameraPosition == senatorscreen)
             {
+                
+                senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
+                Graphics.Draw(senator,200,200);
                 Draw.Rectangle(new Vector2(200, 200), new Vector2(20));
             }
         }

@@ -1,5 +1,6 @@
 ﻿// Include the namespaces (code libraries) you need below.
 using System;
+using System.IO;
 using System.Numerics;
 
 // The namespace your code is in.
@@ -27,6 +28,8 @@ namespace MohawkGame2D
         /// </summary>
         public void Setup()
         {
+            string cwd = Directory.GetCurrentDirectory();
+            Console.WriteLine($"Current Directory: {cwd}");
             Window.SetTitle("Albaquerque");
             Window.SetSize(400,400);
         }
