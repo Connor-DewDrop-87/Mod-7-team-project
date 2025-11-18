@@ -13,11 +13,13 @@ namespace MohawkGame2D
         // Place your variables here:
         OST Music = new OST();
         Direction Camera = new Direction();
-        bool isAlive = true;
+        Senator Enemy = new Senator();
         // Open is false, Closed is true
         bool doorShut = false;
         // Power on is true, Power off is false
         bool powerIsOn = true;
+        // Check if Player is Alive. True means they are, false means they aren't
+        bool isAlive;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         /// <summary>
@@ -35,13 +37,28 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
-            Music.BackgroundMusic();
-            Camera.CameraHud();
-            Camera.CameraSwitch();
-            // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            ScreenPosition = Camera.ShareScreenPosition();
             // Make walls of the screen based on ScreenPosition
             CreateWalls();
+            // Background Music
+            Music.Backgroundmusic();
+            isAlive = Enemy.HasNotKilledPlayer();
+            if (isAlive == true)
+            {
+                Camera.CameraPosition();
+            }
+            // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
+            if (isAlive == false)
+            {
+                ScreenPosition = 7;
+                
+            }
+            else
+            {
+                ScreenPosition = Camera.ShareScreenPosition();
+            }
+            Enemy.DeathToggle();
+            // Draw Enemy Senator
+            Enemy.DrawSenator();
             // Office Screen
             if (ScreenPosition == 0)
             {
@@ -81,6 +98,14 @@ namespace MohawkGame2D
             {
 
             }
+            // Death Screen
+            if (ScreenPosition == 7)
+            {
+                Draw.FillColor = Color.LightGray;
+                Draw.Rectangle(new Vector2(0, 0), new Vector2(400, 400));
+                Draw.FillColor = Color.Black;
+                Text.Draw("YOU DIED", new Vector2(150, 0));
+            }
         }
         public void CreateDoor(Vector2 doorCentreUpper,Vector2 doorCentreLower)
         {
@@ -101,7 +126,7 @@ namespace MohawkGame2D
                 Draw.Quad(doorCentreUpper - new Vector2(70, 0), doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower - new Vector2(70, 0));
             }
             // Door on/off switch
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.W))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.W) && isAlive == true)
             {
                 if (powerIsOn == true)
                 {
@@ -151,6 +176,7 @@ namespace MohawkGame2D
 
             }
         }
+        
     }
 
 }

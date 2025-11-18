@@ -10,20 +10,15 @@ namespace MohawkGame2D
 {
     public class Direction
     {
-        // 0 is north, 1 is east, 2 is south, and 3 is west
         int currentCamera = 0;
         string[] currentDirection =
         {
-            "Office","HallWayC","OptionalRoomB", "SenatorContainment","OptionalRoomA", "Vent", "Hallway A"
+            "Office","HallWayC","OptionalRoomB", "Bridge","OptionalRoomA", "Vent", "Hallway A"
         };
-
-        public void CameraHud()
+        public void CameraPosition()
         {
             // Display Direction in Text
             Text.Draw($"{currentDirection[currentCamera]}", new Vector2(150, 0));
-        }
-        public void CameraSwitch()
-        {
             // Turn Camera Left
             if (Input.IsKeyboardKeyPressed(KeyboardInput.A))
             {
