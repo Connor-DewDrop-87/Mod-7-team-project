@@ -14,7 +14,7 @@ namespace MohawkGame2D
         int currentCamera = 0;
         string[] currentDirection =
         {
-            "Office","HallWayC","OptionalRoomB", "SenatorContainment","OptionalRoomA", "Vent", "Hallway A"
+            "Office","HallWayC","OptionalRoomB", "SenatorContainment","OptionalRoomA", "Vent", "Hallway A", "You Died"
         };
 
         public void CameraHud()

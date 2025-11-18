@@ -39,9 +39,19 @@ namespace MohawkGame2D
             Music.Backgroundmusic();
             // Camera Directions
             Camera.CameraHud();
-            Camera.CameraSwitch();
+            if (isAlive == true)
+            {
+                Camera.CameraSwitch();
+            }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            ScreenPosition = Camera.ShareScreenPosition();
+            if (isAlive == false)
+            {
+                ScreenPosition = 7;
+            }
+            else
+            {
+                ScreenPosition = Camera.ShareScreenPosition();
+            }
             // Make walls of the screen based on ScreenPosition
             CreateWalls();
             // Office Screen
@@ -80,6 +90,11 @@ namespace MohawkGame2D
             }
             // Hallway A Screen
             if (ScreenPosition == 6)
+            {
+
+            }
+            // Death Screen
+            if (ScreenPosition == 7)
             {
 
             }
@@ -153,6 +168,7 @@ namespace MohawkGame2D
 
             }
         }
+
     }
 
 }
