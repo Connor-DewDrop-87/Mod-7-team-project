@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace MohawkGame2D
 {
-    public class Direction
+    public class Camera
     {
         int currentCamera = 0;
-        string[] currentDirection =
+        string[] currentPosition =
         {
             "Office","HallWayC","OptionalRoomB", "Bridge","OptionalRoomA", "Vent", "Hallway A"
         };
         public void CameraPosition()
         {
             // Display Direction in Text
-            Text.Draw($"{currentDirection[currentCamera]}", new Vector2(150, 0));
+            Text.Draw($"{currentPosition[currentCamera]}", new Vector2(150, 0));
             // Turn Camera Left
             if (Input.IsKeyboardKeyPressed(KeyboardInput.A))
             {
