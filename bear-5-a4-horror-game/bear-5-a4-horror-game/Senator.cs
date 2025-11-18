@@ -39,7 +39,7 @@ namespace MohawkGame2D
         {
             if (isPlayerAlive==true)
             {
-                senatorMoveTick += Random.Integer(5, 40)*Time.DeltaTime;
+                senatorMoveTick += Random.Integer(5, 50)*Time.DeltaTime;
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;

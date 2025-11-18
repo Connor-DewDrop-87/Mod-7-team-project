@@ -15,10 +15,7 @@ namespace MohawkGame2D
         OST Music = new OST();
         Camera Player = new Camera();
         Senator Enemy = new Senator();
-        // Open is false, Closed is true
-        bool doorShut = false;
-        // Power on is true, Power off is false
-        bool powerIsOn = true;
+        Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive;
         Color brown = new Color(150, 75, 0);
@@ -65,7 +62,7 @@ namespace MohawkGame2D
             if (ScreenPosition == 0)
             {
                 // Door
-                CreateDoor(new Vector2(200,60), new Vector2(200,180));
+                MainDoor.CreateDoor(new Vector2(200,60),new Vector2(200,180));
                 // Desk
                 Draw.FillColor = brown;
                 Draw.Rectangle(new Vector2(20,300), new Vector2(360,60));
@@ -115,33 +112,7 @@ namespace MohawkGame2D
                 Text.Draw("YOU DIED", new Vector2(150, 0));
             }
         }
-        public void CreateDoor(Vector2 doorCentreUpper,Vector2 doorCentreLower)
-        {
-            Draw.FillColor = Color.LightGray;
-            // Door State Checker
-            if (doorShut)
-            {
-                // Door Right side
-                Draw.Quad(doorCentreUpper, doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower);
-                // Door Left Side
-                Draw.Quad(doorCentreUpper, doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower);
-            }
-            if (!doorShut)
-            {
-                // Door Right side
-                Draw.Quad(doorCentreUpper+new Vector2(70,0), doorCentreUpper + new Vector2(80, 0), doorCentreLower + new Vector2(80, 0), doorCentreLower + new Vector2(70, 0));
-                // Door Left Side
-                Draw.Quad(doorCentreUpper - new Vector2(70, 0), doorCentreUpper - new Vector2(80, 0), doorCentreLower - new Vector2(80, 0), doorCentreLower - new Vector2(70, 0));
-            }
-            // Door on/off switch
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.W) && isAlive == true)
-            {
-                if (powerIsOn == true)
-                {
-                    doorShut = !doorShut;
-                }
-            }
-        }
+        
         
         
     }
