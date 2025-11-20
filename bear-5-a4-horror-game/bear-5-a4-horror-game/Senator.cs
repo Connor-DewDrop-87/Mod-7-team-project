@@ -17,8 +17,36 @@ namespace MohawkGame2D
         Vector2 senatorPosition = new Vector2(100,100);
         float senatorMoveTick=0;
         bool isPlayerAlive = true;
+        bool hasScared = false;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
+        Texture2D[] senatorJumpScare = {
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_00_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_01_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_02_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_03_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_04_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_05_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_06_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_07_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_08_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_09_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_10_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_11_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_12_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_13_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_14_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_15_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_16_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_17_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_18_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_19_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_20_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_21_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_22_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_23_delay-0.04s.png"),
+            };
+            
         
         public void DrawSenator()
         {
@@ -31,8 +59,22 @@ namespace MohawkGame2D
             // Get Player Position
              cameraPosition = Camera.ShareScreenPosition();
             // Draw Senator if the Player can see them
-            if (cameraPosition == senatorScreen)
+            if (senatorScreen == 0)
             {
+                isPlayerAlive = false;
+                for (int i = 0; i < senatorJumpScare.Length * 12000; i++)
+                {
+                    float frames = i % 12000;
+                    if (frames == 0)
+                    {
+                        Graphics.Draw(senatorJumpScare[i / 12000], 0,0);
+                    }
+                }
+                hasScared = true;
+            }
+            else if (cameraPosition == senatorScreen)
+            {
+                Graphics.Draw(senatorJumpScare[1], senatorPosition);
                 Graphics.Draw(senator, senatorPosition);
             }
         }
@@ -52,24 +94,27 @@ namespace MohawkGame2D
                     }
                     else
                     {
-                        senatorScreen = Random.Integer(0, 6);
+                        senatorScreen = Random.Integer(0, 0);
                     }     
                 }
             }
         }
         public bool HasNotKilledPlayer()
         {
-            if (isPlayerAlive == false)
+            if (isPlayerAlive == false && hasScared == true)
             {
                 return false;
             }
             return true;
         }
-        public void DeathToggle()
+        public void ResetButton()
         {
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space) && isPlayerAlive==false)
             {
-                isPlayerAlive = !isPlayerAlive;
+                isPlayerAlive = true;
+                hasScared = true;
+                senatorScreen = 3;
+                senatorMoveTick = 0;
             }
         }
     }
