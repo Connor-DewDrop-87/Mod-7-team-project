@@ -25,8 +25,6 @@ namespace MohawkGame2D
         /// </summary>
         public void Setup()
         {
-            string cwd = Directory.GetCurrentDirectory();
-            Console.WriteLine($"Current Directory: {cwd}");
             Window.SetTitle("Albaquerque");
             Window.SetSize(400,400);
         }
@@ -37,42 +35,45 @@ namespace MohawkGame2D
         public void Update()
         {
             Window.ClearBackground(Color.OffWhite);
+            Rooms();
             // Background Music
             Music.BackgroundMusic();
             isAlive = Enemy.HasNotKilledPlayer();
             if (isAlive == true)
             {
-                Player.CameraPosition();
+                Player.CameraButtons();
             }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            if (isAlive == false)
-            {
-                ScreenPosition = 7;
-                
-            }
-            else
-            {
-                ScreenPosition = Player.ShareScreenPosition();
-            }
-            Enemy.DeathToggle();
+            ScreenPosition = Player.ShareScreenPosition();
+            Enemy.ResetButton();
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
             Enemy.DrawSenator();
+            Player.CameraPosition();
+
+        }
+        public void Rooms()
+        {
             // Office Screen
             if (ScreenPosition == 0)
             {
                 // Door
-                MainDoor.CreateDoor(new Vector2(200,60),new Vector2(200,180),new Vector2(80,0),new Vector2(80,0));
-                MainDoor.DoorToggle();
+                MainDoor.CreateDoor(new Vector2(200, 60), new Vector2(200, 180), new Vector2(80, 0), new Vector2(80, 0));
+                if (isAlive == true)
+                { 
+                    MainDoor.DoorToggle();
+                }
                 // Desk
                 Draw.FillColor = brown;
-                Draw.Rectangle(new Vector2(20,300), new Vector2(360,60));
+                Draw.Rectangle(new Vector2(20, 300), new Vector2(360, 60));
                 // Wall outlines to add depth
                 Draw.Line(new Vector2(0, 260), new Vector2(80, 180));
                 Draw.Line(new Vector2(400, 260), new Vector2(320, 180));
                 Draw.Line(new Vector2(80, 0), new Vector2(80, 180));
                 Draw.Line(new Vector2(320, 0), new Vector2(320, 180));
                 Draw.Line(new Vector2(80, 180), new Vector2(320, 180));
+                float frames = Time.DeltaTime;
+                Text.Draw($"{frames}", new Vector2(150, 200));
             }
             // HallWayC Screen
             if (ScreenPosition == 1)

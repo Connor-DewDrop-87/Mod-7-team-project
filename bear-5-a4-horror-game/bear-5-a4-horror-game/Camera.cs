@@ -19,10 +19,13 @@ namespace MohawkGame2D
         {
             // Display Direction in Text
             Text.Draw($"{currentPosition[currentCamera]}", new Vector2(150, 0));
+        }
+        public void CameraButtons()
+        {
             // Turn Camera Left
             if (Input.IsKeyboardKeyPressed(KeyboardInput.A))
             {
-               
+
                 currentCamera--;
                 // Loop camera back to west position
                 if (currentCamera < 0)
@@ -40,7 +43,6 @@ namespace MohawkGame2D
                     currentCamera = 0;
                 }
             }
-            
         }
         public int ShareScreenPosition()
         {
