@@ -48,11 +48,11 @@ namespace MohawkGame2D
                     senatorMoveTick = 0;
                     if (doorClosed==true)
                     {
-                        senatorScreen = Random.Integer(1, 1);
+                        senatorScreen = Random.Integer(1, 6);
                     }
                     else
                     {
-                        senatorScreen = Random.Integer(0, 0);
+                        senatorScreen = Random.Integer(0, 6);
                     }     
                 }
             }
