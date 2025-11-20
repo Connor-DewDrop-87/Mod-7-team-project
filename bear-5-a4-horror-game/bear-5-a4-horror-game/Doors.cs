@@ -45,6 +45,7 @@ namespace MohawkGame2D
         }
         public bool CheckDoorStatus()
         {
+            DoorToggle();
             if (doorClosed == true)
             {
                 return true;

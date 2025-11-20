@@ -15,7 +15,7 @@ namespace MohawkGame2D
         int cameraPosition;
         int senatorScreen=3;
         Vector2 senatorPosition = new Vector2(100,100);
-        float senatorMoveTick=99;
+        float senatorMoveTick=0;
         bool isPlayerAlive = true;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
