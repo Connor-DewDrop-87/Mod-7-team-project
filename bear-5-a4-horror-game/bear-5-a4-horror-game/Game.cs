@@ -43,7 +43,10 @@ namespace MohawkGame2D
             Rooms();
             Player.CameraPosition();
             // Background Music
-            Music.BackgroundMusic();
+            if (isAlive)
+            {
+                Music.BackgroundMusic();
+            }
             isAlive = Enemy.HasNotKilledPlayer();
             if (isAlive == true)
             {

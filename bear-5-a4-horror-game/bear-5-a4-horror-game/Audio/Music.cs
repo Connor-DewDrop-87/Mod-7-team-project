@@ -19,8 +19,7 @@ namespace MohawkGame2D
         Music Redsun = Audio.LoadMusic("../../../../../Audio/Armstrong/Redsun.wav"); 
         Music Idiot = Audio.LoadMusic("../../../../../Audio/Armstrong/Senator Armstrong - Idiot.wav"); 
         Music NanoMachines = Audio.LoadMusic("../../../../../Audio/Armstrong/_Senator - Nanomachines, Son.wav"); 
-        Music Omelette = Audio.LoadMusic("../../../../../Audio/Armstrong/Making the mother of all omelettes here Jack.wav"); 
-      
+        Music Omelette = Audio.LoadMusic("../../../../../Audio/Armstrong/Making the mother of all omelettes here Jack.wav");
      
         public void BackgroundMusic()
         {
@@ -28,6 +27,10 @@ namespace MohawkGame2D
             {
                 Audio.Play(FF01);
             }
+            
+        }
+        public void OmeletteSound()
+        {
             Audio.Play(Omelette);
         }
     }

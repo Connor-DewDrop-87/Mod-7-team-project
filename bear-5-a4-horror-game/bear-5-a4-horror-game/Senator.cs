@@ -13,6 +13,7 @@ namespace MohawkGame2D
     {
         Camera Camera = new Camera();
         Doors DoorCheck = new Doors();
+        OST senatorSounds = new OST();
         int cameraPosition;
         int senatorScreen=3;
         Vector2 senatorPosition = new Vector2(300,200);
@@ -84,6 +85,7 @@ namespace MohawkGame2D
             {
                Graphics.Draw(senator, senatorPosition);
                 isStaredAt = true;
+                senatorSounds.OmeletteSound();
             }
             else if (isStaredAt == true)
             {
