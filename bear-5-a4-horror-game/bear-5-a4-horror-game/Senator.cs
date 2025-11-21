@@ -13,6 +13,7 @@ namespace MohawkGame2D
     {
         Camera Camera = new Camera();
         Doors DoorCheck = new Doors();
+        OST senatorSounds = new OST();
         int cameraPosition;
         int senatorScreen=3;
         Vector2 senatorPosition = new Vector2(300,200);
@@ -20,6 +21,7 @@ namespace MohawkGame2D
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
+        float frames = 0;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
         Texture2D[] senatorJumpScare = {
@@ -67,7 +69,15 @@ namespace MohawkGame2D
                 isPlayerAlive = false;
                 for (int i = 0; i < senatorJumpScare.Length; i++)
                 {
-                    Graphics.Draw(senatorJumpScare[i], 100,100);
+                    frames += 1*Time.DeltaTime;
+                    if (frames >= 60)
+                    {
+                        Graphics.Draw(senatorJumpScare[i], 100, 100);
+                    }
+                    else
+                    {
+                        i--;
+                    }
                 }
                 hasScared = true;
             }
@@ -75,6 +85,7 @@ namespace MohawkGame2D
             {
                Graphics.Draw(senator, senatorPosition);
                 isStaredAt = true;
+                senatorSounds.OmeletteSound();
             }
             else if (isStaredAt == true)
             {
@@ -98,7 +109,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 0);
+                        senatorScreen = Random.Integer(0, 6);
                     }     
                 }
             }
@@ -113,13 +124,12 @@ namespace MohawkGame2D
         }
         public void ResetButton()
         {
-            
                 isPlayerAlive = true;
                 hasScared = true;
                 isStaredAt = false;
+                doorClosed = false;
                 senatorScreen = 3;
                 senatorMoveTick = 0;
-            
         }
     }
 }

@@ -75,7 +75,6 @@ namespace MohawkGame2D
             
                 doorClosed = false;
                 powerIsOn = true;
-            
         }
     }
 }

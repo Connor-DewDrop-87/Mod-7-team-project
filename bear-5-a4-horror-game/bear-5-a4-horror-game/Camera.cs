@@ -19,7 +19,7 @@ namespace MohawkGame2D
         public void CameraPosition()
         {
             // Display Direction in Text
-            
+
             Text.Color = textColor;
             Text.Draw($"{currentPosition[currentCamera]}", new Vector2(400, 0));
         }
@@ -53,10 +53,10 @@ namespace MohawkGame2D
         }
         public void ResetButton()
         {
-            
-                currentCamera = 0;
-            
+            currentCamera = 0;
         }
-
     }
 }
+            
+        
+
