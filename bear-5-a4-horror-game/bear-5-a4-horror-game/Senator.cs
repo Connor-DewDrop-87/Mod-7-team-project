@@ -98,7 +98,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 6);
+                        senatorScreen = Random.Integer(0, 0);
                     }     
                 }
             }
@@ -113,14 +113,13 @@ namespace MohawkGame2D
         }
         public void ResetButton()
         {
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space) && isPlayerAlive==false)
-            {
+            
                 isPlayerAlive = true;
                 hasScared = true;
                 isStaredAt = false;
                 senatorScreen = 3;
                 senatorMoveTick = 0;
-            }
+            
         }
     }
 }

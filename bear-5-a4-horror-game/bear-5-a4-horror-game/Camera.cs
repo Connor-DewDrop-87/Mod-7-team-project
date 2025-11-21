@@ -13,7 +13,7 @@ namespace MohawkGame2D
         int currentCamera = 0;
         string[] currentPosition =
         {
-            "OFFICE","HALLWAYA","ROOMB", "BRIDGE","ROOMA", "VENT", "HALLWAYB"
+            "OFFICE","HALLWAYA","ROOMA", "BRIDGE","ROOMB", "VENT", "HALLWAYB"
         };
         Color textColor = new Color(0, 170, 245);
         public void CameraPosition()
@@ -50,6 +50,12 @@ namespace MohawkGame2D
         public int ShareScreenPosition()
         {
             return currentCamera;
+        }
+        public void ResetButton()
+        {
+            
+                currentCamera = 0;
+            
         }
 
     }
