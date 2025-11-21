@@ -134,6 +134,7 @@ namespace MohawkGame2D
         Back = 4,
         Menu = 82,
         VolumeUp = 24,
-        VolumeDown = 25
+        VolumeDown = 25,
+        KEY_M = 349
     }
 }

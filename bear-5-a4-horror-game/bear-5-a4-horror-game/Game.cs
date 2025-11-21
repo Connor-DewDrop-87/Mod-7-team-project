@@ -21,7 +21,9 @@ namespace MohawkGame2D
         public void Setup()
         {
             Window.SetTitle("Albaquerque");
-            Window.SetSize(400,400);
+            Window.SetSize(400, 400);
+
+            Music.BackgroundMusic();
         }
 
         /// <summary>
@@ -35,7 +37,13 @@ namespace MohawkGame2D
             Camera.CameraSwitch();
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Camera.ShareScreenPosition();
-        }
-    }
 
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.KEY_M))
+            {
+                Audio.Play(Audio.LoadSound("Audio/First_Fantasy_OST 0.1.wav"));
+            }
+        }
+
+
+    }
 }
