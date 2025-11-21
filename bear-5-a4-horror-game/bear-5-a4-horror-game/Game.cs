@@ -29,7 +29,9 @@ namespace MohawkGame2D
         public void Setup()
         {
             Window.SetTitle("Albaquerque");
-            Window.SetSize(800,800);
+            Window.SetSize(800, 800);
+
+            Music.BackgroundMusic();
         }
 
         /// <summary>
@@ -53,6 +55,13 @@ namespace MohawkGame2D
                 Text.Draw("YOU DIED IN", new Vector2(200, 0));
             }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
+            ScreenPosition = Camera.ShareScreenPosition();
+
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.KEY_M))
+            {
+                Audio.Play(Audio.LoadSound("Audio/First_Fantasy_OST 0.1.wav"));
+            }
+        }
             ScreenPosition = Player.ShareScreenPosition();
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
@@ -147,4 +156,6 @@ namespace MohawkGame2D
 
     }
 
+
+    }
 }
