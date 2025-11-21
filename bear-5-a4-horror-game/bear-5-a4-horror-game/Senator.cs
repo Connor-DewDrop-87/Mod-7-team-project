@@ -76,6 +76,10 @@ namespace MohawkGame2D
                 else
                 {
                     Graphics.Draw(senator, 300, 100);
+                    if (hasScared==false)
+                    {
+                        senatorSounds.DontFuckSound();
+                    }
                     hasScared = true;
                 }
             }
@@ -110,7 +114,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 0);
+                        senatorScreen = Random.Integer(1, 6);
                     }     
                 }
             }
@@ -122,10 +126,6 @@ namespace MohawkGame2D
                 return false;
             }
             return true;
-        }
-        public void SenatorVoiceLine()
-        {
-
         }
     }
 }

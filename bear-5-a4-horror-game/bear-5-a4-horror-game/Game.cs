@@ -16,6 +16,7 @@ namespace MohawkGame2D
         OST Music = new OST();
         Camera Player = new Camera();
         Senator Enemy = new Senator();
+        Murphy Enemy2 = new Murphy();
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive;
@@ -46,6 +47,10 @@ namespace MohawkGame2D
                 
             }
             isAlive = Enemy.HasNotKilledPlayer();
+            if (isAlive==true)
+            {
+                isAlive = Enemy2.HasNotKilledPlayer();
+            }
             if (isAlive == true)
             {
                 Player.CameraButtons();
@@ -60,6 +65,10 @@ namespace MohawkGame2D
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
             Enemy.DrawSenator();
+
+            // Draw and Update Movement of Murphy
+            Enemy2.MoveMurphy();
+            Enemy2.DrawMurphy();
 
             if (isAlive == true)
             {

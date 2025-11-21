@@ -55,6 +55,10 @@ namespace MohawkGame2D
         {
             Audio.Play(Omelette);
         }
+        public void DontFuckSound()
+        {
+            Audio.Play(DontFuckWithMe);
+        }
         public void RedSunSound()
         {
             Audio.Play(Redsun);
