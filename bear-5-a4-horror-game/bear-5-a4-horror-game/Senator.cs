@@ -20,6 +20,7 @@ namespace MohawkGame2D
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
+        float frames = 0;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
         Texture2D[] senatorJumpScare = {
@@ -67,7 +68,15 @@ namespace MohawkGame2D
                 isPlayerAlive = false;
                 for (int i = 0; i < senatorJumpScare.Length; i++)
                 {
-                    Graphics.Draw(senatorJumpScare[i], 100,100);
+                    frames += 1*Time.DeltaTime;
+                    if (frames >= 60)
+                    {
+                        Graphics.Draw(senatorJumpScare[i], 100, 100);
+                    }
+                    else
+                    {
+                        i--;
+                    }
                 }
                 hasScared = true;
             }
