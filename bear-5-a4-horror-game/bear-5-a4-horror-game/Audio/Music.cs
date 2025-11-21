@@ -20,6 +20,8 @@ namespace MohawkGame2D
         Music Idiot = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/Senator Armstrong - Idiot.wav"); 
         Music NanoMachines = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/_Senator - Nanomachines, Son.wav"); 
         Music Omelette = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/Making the mother of all omelettes here Jack.wav"); 
+        Music PipeSound = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/Metal_Pipe_Impace.wav"); 
+        Music VineBoom = Audio.LoadMusic("../../../../../Audio/(Audio/vine-boom.wav"); 
       
      
         public void BackgroundMusic()
