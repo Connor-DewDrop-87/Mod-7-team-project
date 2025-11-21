@@ -132,5 +132,9 @@ namespace MohawkGame2D
                 senatorMoveTick = 0;
                 frames = 0;
         }
+        public void SenatorVoiceLine()
+        {
+
+        }
     }
 }

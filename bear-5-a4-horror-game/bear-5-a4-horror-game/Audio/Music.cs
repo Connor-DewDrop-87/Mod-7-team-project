@@ -17,39 +17,40 @@ namespace MohawkGame2D
         Music Chill = Audio.LoadMusic("../../../../../Audio/Chill.wav");
         Music Credits = Audio.LoadMusic("../../../../../Audio/credits music.wav");
         //Senator Armstrong Audio Files
-        Music Idiot = Audio.LoadMusic("../../../../../Audio/Armstrong/Senator Armstrong - Idiot.wav");
-        Music NanoMachines = Audio.LoadMusic("../../../../../Audio/Armstrong/_Senator - Nanomachines, Son.wav");
-        Music SlimJim = Audio.LoadMusic("../../../../../Audio/Armstrong/Voicy_Snap into a slim jim.wav");
-        Music ComeOn = Audio.LoadMusic("../../../../../Audio/Armstrong/Voicy_Senator Armstrong - Come on!.wav");
-        Music Source = Audio.LoadMusic("../../../../../Audio/Armstrong/Voicy_My source.wav");
-        Music Omelette = Audio.LoadMusic("../../../../../Audio/Armstrong/Making the mother of all omelettes here Jack.wav");
-        Music AWhoop = Audio.LoadMusic("../../../../../Audio/Armstrong/AWhoop.wav");
-        Music DontFuckWithMe = Audio.LoadMusic("../../../../../Audio/Armstrong/DontFuckWithMe.wav");
-        Music Freak = Audio.LoadMusic("../../../../../Audio/Armstrong/Freak.wav");
-        Music DontGetCocky = Audio.LoadMusic("../../../../../Audio/Armstrong/DontGetCocky.wav");
-        Music GreatestFight = Audio.LoadMusic("../../../../../Audio/Armstrong/GreatestFightOfMyLife.wav");
-        Music ILikeYouJack = Audio.LoadMusic("../../../../../Audio/Armstrong/ILikeYouJack.wav");
-        Music LittleShit = Audio.LoadMusic("../../../../../Audio/Armstrong/LittleShit.wav");
-        Music ArmstrongHurt = Audio.LoadMusic("../../../../../Audio/ThatOneHurt.wav");
-        Music ArmstrongSearch = Audio.LoadMusic("../../../../../Audio/WhereAreYou.wav");
+        Sound Idiot = Audio.LoadSound("../../../../../Audio/Armstrong/Senator Armstrong - Idiot.wav");
+        Sound NanoMachines = Audio.LoadSound("../../../../../Audio/Armstrong/_Senator - Nanomachines, Son.wav");
+        Sound SlimJim = Audio.LoadSound("../../../../../Audio/Armstrong/Voicy_Snap into a slim jim.wav");
+        Sound ComeOn = Audio.LoadSound("../../../../../Audio/Armstrong/Voicy_Senator Armstrong - Come on!.wav");
+        Sound Source = Audio.LoadSound("../../../../../Audio/Armstrong/Voicy_My source.wav");
+        Sound Omelette = Audio.LoadSound("../../../../../Audio/Armstrong/Making the mother of all omelettes here Jack.wav");
+        Sound AWhoop = Audio.LoadSound("../../../../../Audio/Armstrong/AWhoop.wav");
+        Sound DontFuckWithMe = Audio.LoadSound("../../../../../Audio/Armstrong/DontFuckWithMe.wav");
+        Sound Freak = Audio.LoadSound("../../../../../Audio/Armstrong/Freak.wav");
+        Sound DontGetCocky = Audio.LoadSound("../../../../../Audio/Armstrong/DontGetCocky.wav");
+        Sound GreatestFight = Audio.LoadSound("../../../../../Audio/Armstrong/GreatestFightOfMyLife.wav");
+        Sound ILikeYouJack = Audio.LoadSound("../../../../../Audio/Armstrong/ILikeYouJack.wav");
+        Sound LittleShit = Audio.LoadSound("../../../../../Audio/Armstrong/LittleShit.wav");
+        Sound ArmstrongHurt = Audio.LoadSound("../../../../../Audio/ThatOneHurt.wav");
+        Sound ArmstrongSearch = Audio.LoadSound("../../../../../Audio/WhereAreYou.wav");
         //Intercom Armstrong Audio
-        Music UncleSam = Audio.LoadMusic("../../../../../Audio/UncleSamNeedsToDieJack.wav");
-        Music WrathUSA = Audio.LoadMusic("../../../../../Audio/WrathOfTheUSA.wav");
-        Music EnemyOfAmerica = Audio.LoadMusic("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
-        Music HideAndSeek = Audio.LoadMusic("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
+        Sound UncleSam = Audio.LoadSound("../../../../../Audio/UncleSamNeedsToDieJack.wav");
+        Sound WrathUSA = Audio.LoadSound("../../../../../Audio/WrathOfTheUSA.wav");
+        Sound EnemyOfAmerica = Audio.LoadSound("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
+        Sound HideAndSeek = Audio.LoadSound("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
         //Senator Armstrong Sound Effects
-        Music PipeSound = Audio.LoadMusic("../../../../../Audio/Armstrong/Metal_Pipe_Impace.wav");
-        Music VineBoom = Audio.LoadMusic("../../../../../Audio/vine-boom.wav");
+        Sound PipeSound = Audio.LoadSound("../../../../../Audio/Armstrong/Metal_Pipe_Impace.wav");
+        Sound VineBoom = Audio.LoadSound("../../../../../Audio/vine-boom.wav");
         //Sundown Audio Files
         Music Redsun = Audio.LoadMusic("../../../../../Audio/SunDowner/Redsun.wav");
-        Music EvilLaugh = Audio.LoadMusic("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
-        Music FeelPain = Audio.LoadMusic("../../../../../Audio/SunDowner/FeelingThePain.wav");
-        Music TakeMore = Audio.LoadMusic("../../../../../Audio/SunDowner/Gonna take more than that.wav");
-        Music LoveThisShit = Audio.LoadMusic("../../../../../Audio/SunDowner/ILoveThisShit.wav");
-        Music IdiotSD = Audio.LoadMusic("../../../../../Audio/SunDowner/IdiotSundown.wav");
-        Music Pathetic = Audio.LoadMusic("../../../../../Audio/SunDowner/Pathetic.wav");
-        Music ThisIsFun = Audio.LoadMusic("../../../../../Audio/SunDowner/ThisIsFun.wav");
-        Music INVINCIBLE = Audio.LoadMusic("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
+        Sound EvilLaugh = Audio.LoadSound("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
+        Sound FeelPain = Audio.LoadSound("../../../../../Audio/SunDowner/FeelingThePain.wav");
+        Sound TakeMore = Audio.LoadSound("../../../../../Audio/SunDowner/Gonna take more than that.wav");
+        Sound LoveThisShit = Audio.LoadSound("../../../../../Audio/SunDowner/ILoveThisShit.wav");
+        Sound IdiotSD = Audio.LoadSound("../../../../../Audio/SunDowner/IdiotSundown.wav");
+        Sound Pathetic = Audio.LoadSound("../../../../../Audio/SunDowner/Pathetic.wav");
+        Sound ThisIsFun = Audio.LoadSound("../../../../../Audio/SunDowner/ThisIsFun.wav");
+        Sound INVINCIBLE = Audio.LoadSound("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
+        
         public void OmeletteSound()
         {
             Audio.Play(Omelette);
