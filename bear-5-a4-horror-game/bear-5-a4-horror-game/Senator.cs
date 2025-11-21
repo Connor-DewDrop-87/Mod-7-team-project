@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace MohawkGame2D
 {
@@ -14,10 +15,11 @@ namespace MohawkGame2D
         Doors DoorCheck = new Doors();
         int cameraPosition;
         int senatorScreen=3;
-        Vector2 senatorPosition = new Vector2(100,100);
+        Vector2 senatorPosition = new Vector2(300,200);
         float senatorMoveTick=0;
         bool isPlayerAlive = true;
         bool hasScared = false;
+        bool isStaredAt = false;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
         Texture2D[] senatorJumpScare = {
@@ -55,28 +57,31 @@ namespace MohawkGame2D
             if (isPlayerAlive == true)
             {
                 Camera.CameraPosition();
+                Camera.CameraButtons();
             }
             // Get Player Position
              cameraPosition = Camera.ShareScreenPosition();
             // Draw Senator if the Player can see them
+            
             if (senatorScreen == 0)
             {
                 isPlayerAlive = false;
-                for (int i = 0; i < senatorJumpScare.Length * 12000; i++)
+                for (int i = 0; i < senatorJumpScare.Length; i++)
                 {
-                    float frames = i % 12000;
-                    if (frames == 0)
-                    {
-                        Graphics.Draw(senatorJumpScare[i / 12000], 0,0);
-                    }
+                    Graphics.Draw(senatorJumpScare[i], 0,0);
                 }
                 hasScared = true;
             }
             else if (cameraPosition == senatorScreen)
             {
-                Graphics.Draw(senatorJumpScare[1], senatorPosition);
-                Graphics.Draw(senator, senatorPosition);
+               Graphics.Draw(senator, senatorPosition);
+                isStaredAt = true;
             }
+            else if (isStaredAt == true)
+            {
+                isStaredAt = false;
+            }
+
         }
         public void MoveSenator()
         {
@@ -88,13 +93,13 @@ namespace MohawkGame2D
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;
-                    if (doorClosed==true)
+                    if (doorClosed==true && isStaredAt==false)
                     {
                         senatorScreen = Random.Integer(1, 6);
                     }
-                    else
+                    else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 0);
+                        senatorScreen = Random.Integer(0, 6);
                     }     
                 }
             }
@@ -113,6 +118,7 @@ namespace MohawkGame2D
             {
                 isPlayerAlive = true;
                 hasScared = true;
+                isStaredAt = false;
                 senatorScreen = 3;
                 senatorMoveTick = 0;
             }

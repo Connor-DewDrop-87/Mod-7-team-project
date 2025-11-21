@@ -2,6 +2,7 @@
 using System;
 using System.IO;
 using System.Numerics;
+using System.Threading;
 
 // The namespace your code is in.
 namespace MohawkGame2D
@@ -26,7 +27,7 @@ namespace MohawkGame2D
         public void Setup()
         {
             Window.SetTitle("Albaquerque");
-            Window.SetSize(400,400);
+            Window.SetSize(800,800);
         }
 
         /// <summary>
@@ -50,6 +51,10 @@ namespace MohawkGame2D
             Enemy.MoveSenator();
             Enemy.DrawSenator();
             Player.CameraPosition();
+            if (isAlive == true)
+            {
+                MainDoor.DoorToggle();
+            }
 
         }
         public void Rooms()
@@ -57,23 +62,22 @@ namespace MohawkGame2D
             // Office Screen
             if (ScreenPosition == 0)
             {
+                // Door Void
+                Draw.FillColor = Color.Black;
+                Draw.Rectangle(new Vector2(240, 120), new Vector2(320, 240));
                 // Door
-                MainDoor.CreateDoor(new Vector2(200, 60), new Vector2(200, 180), new Vector2(80, 0), new Vector2(80, 0));
-                if (isAlive == true)
-                { 
-                    MainDoor.DoorToggle();
-                }
+                MainDoor.CreateDoor(new Vector2(400, 120), new Vector2(400, 360), new Vector2(160, 0), new Vector2(160, 0));
                 // Desk
                 Draw.FillColor = brown;
-                Draw.Rectangle(new Vector2(20, 300), new Vector2(360, 60));
+                Draw.Rectangle(new Vector2(40, 600), new Vector2(720, 120));
                 // Wall outlines to add depth
-                Draw.Line(new Vector2(0, 260), new Vector2(80, 180));
-                Draw.Line(new Vector2(400, 260), new Vector2(320, 180));
-                Draw.Line(new Vector2(80, 0), new Vector2(80, 180));
-                Draw.Line(new Vector2(320, 0), new Vector2(320, 180));
-                Draw.Line(new Vector2(80, 180), new Vector2(320, 180));
+                Draw.Line(new Vector2(0, 540), new Vector2(160, 360));
+                Draw.Line(new Vector2(800, 520), new Vector2(640, 360));
+                Draw.Line(new Vector2(160, 0), new Vector2(160, 360));
+                Draw.Line(new Vector2(640, 0), new Vector2(640, 360));
+                Draw.Line(new Vector2(160, 360), new Vector2(640, 360));
                 float frames = Time.DeltaTime;
-                Text.Draw($"{frames}", new Vector2(150, 200));
+                Text.Draw($"{frames}", new Vector2(300, 400));
             }
             // HallWayC Screen
             if (ScreenPosition == 1)
@@ -88,7 +92,9 @@ namespace MohawkGame2D
             // SenatorContainment Screen
             if (ScreenPosition == 3)
             {
-
+                // Desk
+                Draw.FillColor = Color.Cyan;
+                Draw.Rectangle(new Vector2(0, 600), new Vector2(800, 200));
             }
             // OptionalRoomA Screen
             if (ScreenPosition == 4)
