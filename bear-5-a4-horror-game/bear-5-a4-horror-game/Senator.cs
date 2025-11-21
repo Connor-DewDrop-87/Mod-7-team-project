@@ -107,7 +107,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 0);
+                        senatorScreen = Random.Integer(0, 6);
                     }     
                 }
             }
