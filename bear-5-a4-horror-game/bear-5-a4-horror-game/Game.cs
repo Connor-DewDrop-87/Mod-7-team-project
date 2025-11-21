@@ -21,6 +21,8 @@ namespace MohawkGame2D
         bool isAlive;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
+        Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
+        Color textColor = new Color(0, 170, 245);
         /// <summary>
         ///     Setup runs once before the game loop begins.
         /// </summary>
@@ -37,6 +39,7 @@ namespace MohawkGame2D
         {
             Window.ClearBackground(Color.OffWhite);
             Rooms();
+            Player.CameraPosition();
             // Background Music
             Music.BackgroundMusic();
             isAlive = Enemy.HasNotKilledPlayer();
@@ -44,16 +47,25 @@ namespace MohawkGame2D
             {
                 Player.CameraButtons();
             }
+            if (isAlive == false)
+            {
+                Text.Color = textColor;
+                Text.Draw("YOU DIED IN", new Vector2(200, 0));
+            }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Player.ShareScreenPosition();
             Enemy.ResetButton();
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
             Enemy.DrawSenator();
-            Player.CameraPosition();
+            
             if (isAlive == true)
             {
                 MainDoor.DoorToggle();
+            }
+            if (ScreenPosition == 7)
+            {
+                
             }
 
         }
@@ -92,9 +104,8 @@ namespace MohawkGame2D
             // SenatorContainment Screen
             if (ScreenPosition == 3)
             {
-                // Desk
-                Draw.FillColor = Color.Cyan;
-                Draw.Rectangle(new Vector2(0, 600), new Vector2(800, 200));
+                // Stage
+                Graphics.Draw(Pizzaria, 0,0);
             }
             // OptionalRoomA Screen
             if (ScreenPosition == 4)
@@ -110,14 +121,6 @@ namespace MohawkGame2D
             if (ScreenPosition == 6)
             {
 
-            }
-            // Death Screen
-            if (ScreenPosition == 7)
-            {
-                Draw.FillColor = Color.LightGray;
-                Draw.Rectangle(new Vector2(0, 0), new Vector2(400, 400));
-                Draw.FillColor = Color.Black;
-                Text.Draw("YOU DIED", new Vector2(150, 0));
             }
         }
         

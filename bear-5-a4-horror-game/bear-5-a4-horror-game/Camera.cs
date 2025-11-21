@@ -13,12 +13,15 @@ namespace MohawkGame2D
         int currentCamera = 0;
         string[] currentPosition =
         {
-            "Office","HallWayC","OptionalRoomB", "Bridge","OptionalRoomA", "Vent", "Hallway A"
+            "OFFICE","HALLWAYA","ROOMB", "BRIDGE","ROOMA", "VENT", "HALLWAYB"
         };
+        Color textColor = new Color(0, 170, 245);
         public void CameraPosition()
         {
             // Display Direction in Text
-            Text.Draw($"{currentPosition[currentCamera]}", new Vector2(150, 0));
+            
+            Text.Color = textColor;
+            Text.Draw($"{currentPosition[currentCamera]}", new Vector2(400, 0));
         }
         public void CameraButtons()
         {

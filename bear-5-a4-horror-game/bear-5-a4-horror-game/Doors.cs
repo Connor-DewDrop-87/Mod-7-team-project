@@ -17,6 +17,7 @@ namespace MohawkGame2D
         public void CreateDoor(Vector2 doorCentreUpper, Vector2 doorCentreLower, Vector2 offSetR, Vector2 offSetL)
         {
             Draw.FillColor = Color.LightGray;
+            CheckPowerStatus();
             // Door State Checker
             if (doorClosed)
             {
@@ -41,17 +42,33 @@ namespace MohawkGame2D
                 {
                     doorClosed = !doorClosed;
                 }
+                else
+                {
+                    doorClosed = false;
+                }
             }
         }
         public bool CheckDoorStatus()
         {
             DoorToggle();
+            CheckPowerStatus();
             if (doorClosed == true)
             {
-                return true;
+                if (powerIsOn == true)
+                {
+                    return true;
+                }
             }
             return false;
 
+        }
+        public bool CheckPowerStatus()
+        {
+            if (powerIsOn == false)
+            {
+                doorClosed = false;
+            }
+            return powerIsOn;
         }
     }
 }
