@@ -56,7 +56,6 @@ namespace MohawkGame2D
             // Player can only switch camera while alive
             if (isPlayerAlive == true)
             {
-                Camera.CameraPosition();
                 Camera.CameraButtons();
             }
             // Get Player Position
@@ -68,7 +67,7 @@ namespace MohawkGame2D
                 isPlayerAlive = false;
                 for (int i = 0; i < senatorJumpScare.Length; i++)
                 {
-                    Graphics.Draw(senatorJumpScare[i], 0,0);
+                    Graphics.Draw(senatorJumpScare[i], 100,100);
                 }
                 hasScared = true;
             }
