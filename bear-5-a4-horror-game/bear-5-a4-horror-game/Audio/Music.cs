@@ -26,16 +26,17 @@ namespace MohawkGame2D
         Music AWhoop = Audio.LoadMusic("../../../../../Audio/Armstrong/AWhoop.wav");
         Music DontFuckWithMe = Audio.LoadMusic("../../../../../Audio/Armstrong/DontFuckWithMe.wav");
         Music Freak = Audio.LoadMusic("../../../../../Audio/Armstrong/Freak.wav");
-        Music EnemyOfAmerica = Audio.LoadMusic("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
         Music DontGetCocky = Audio.LoadMusic("../../../../../Audio/Armstrong/DontGetCocky.wav");
         Music GreatestFight = Audio.LoadMusic("../../../../../Audio/Armstrong/GreatestFightOfMyLife.wav");
-        Music HideAndSeek = Audio.LoadMusic("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
         Music ILikeYouJack = Audio.LoadMusic("../../../../../Audio/Armstrong/ILikeYouJack.wav");
         Music LittleShit = Audio.LoadMusic("../../../../../Audio/Armstrong/LittleShit.wav");
         Music ArmstrongHurt = Audio.LoadMusic("../../../../../Audio/ThatOneHurt.wav");
-        Music UncleSam = Audio.LoadMusic("../../../../../Audio/UncleSamNeedsToDieJack.wav");
         Music ArmstrongSearch = Audio.LoadMusic("../../../../../Audio/WhereAreYou.wav");
+        //Intercom Armstrong Audio
+        Music UncleSam = Audio.LoadMusic("../../../../../Audio/UncleSamNeedsToDieJack.wav");
         Music WrathUSA = Audio.LoadMusic("../../../../../Audio/WrathOfTheUSA.wav");
+        Music EnemyOfAmerica = Audio.LoadMusic("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
+        Music HideAndSeek = Audio.LoadMusic("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
         //Senator Armstrong Sound Effects
         Music PipeSound = Audio.LoadMusic("../../../../../Audio/Armstrong/Metal_Pipe_Impace.wav"); 
         Music VineBoom = Audio.LoadMusic("../../../../../Audio/vine-boom.wav");
