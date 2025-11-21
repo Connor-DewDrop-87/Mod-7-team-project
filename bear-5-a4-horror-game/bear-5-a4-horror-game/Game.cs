@@ -54,7 +54,6 @@ namespace MohawkGame2D
             }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Player.ShareScreenPosition();
-            Enemy.ResetButton();
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
             Enemy.DrawSenator();
@@ -67,6 +66,7 @@ namespace MohawkGame2D
             {
                 
             }
+            ResetAll();
 
         }
         public void Rooms()
@@ -91,12 +91,12 @@ namespace MohawkGame2D
                 float frames = Time.DeltaTime;
                 Text.Draw($"{frames}", new Vector2(300, 400));
             }
-            // HallWayC Screen
+            // HallWayA Screen
             if (ScreenPosition == 1)
             {
 
             }
-            // OptionalRoomB Screen
+            // RoomA Screen
             if (ScreenPosition == 2)
             {
 
@@ -107,7 +107,7 @@ namespace MohawkGame2D
                 // Stage
                 Graphics.Draw(Pizzaria, 0,0);
             }
-            // OptionalRoomA Screen
+            // RoomB Screen
             if (ScreenPosition == 4)
             {
 
@@ -117,15 +117,34 @@ namespace MohawkGame2D
             {
 
             }
-            // Hallway A Screen
+            // HallwayB Screen
             if (ScreenPosition == 6)
             {
 
             }
         }
-        
-        
-        
+        public void ResetAll()
+        {
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            {
+                Player.ResetButton();
+                MainDoor.ResetButton();
+                Enemy.ResetButton();
+                ResetButton();
+            }
+                
+        }
+        public void ResetButton()
+        {
+            
+                isAlive = true;
+                
+                ScreenPosition=0;
+            
+        }
+
+
+
     }
 
 }
