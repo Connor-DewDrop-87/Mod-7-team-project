@@ -70,5 +70,12 @@ namespace MohawkGame2D
             }
             return powerIsOn;
         }
+        public void ResetButton()
+        {
+            
+                doorClosed = false;
+                powerIsOn = true;
+            
+        }
     }
 }
