@@ -51,10 +51,7 @@ namespace MohawkGame2D
         {
             return currentCamera;
         }
-        public void ResetButton()
-        {
-            currentCamera = 0;
-        }
+        
     }
 }
             

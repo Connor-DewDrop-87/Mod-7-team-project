@@ -65,11 +65,7 @@ namespace MohawkGame2D
             {
                 MainDoor.DoorToggle();
             }
-            if (ScreenPosition == 7)
-            {
-
-            }
-            ResetAll();
+            
         }
             
 
@@ -128,22 +124,8 @@ namespace MohawkGame2D
 
             }
         }
-        public void ResetAll()
-        {
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
-            {
-                Player.ResetButton();
-                MainDoor.ResetButton();
-                Enemy.ResetButton();
-                ResetButton();
-            }
-                
-        }
-        public void ResetButton()
-        { 
-                isAlive = true;
-                ScreenPosition=0;
-        }
+        
+       
 
 
 

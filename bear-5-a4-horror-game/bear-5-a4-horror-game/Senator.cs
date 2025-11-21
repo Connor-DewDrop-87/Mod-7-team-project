@@ -21,7 +21,7 @@ namespace MohawkGame2D
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
-        int frames = 0;
+        float frames = 0;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
         Texture2D[] senatorJumpScare = {
@@ -70,11 +70,12 @@ namespace MohawkGame2D
                 senatorSounds.RedSunSound();
                 if (frames < 24)
                 {
-                    Graphics.Draw(senatorJumpScare[frames], 100, 100);
-                    frames += 1;
+                    Graphics.Draw(senatorJumpScare[(int)frames], 100, 100);
+                    frames += 0.5f;
                 }
                 else
                 {
+                    Graphics.Draw(senator, 300, 100);
                     hasScared = true;
                 }
             }
@@ -121,16 +122,6 @@ namespace MohawkGame2D
                 return false;
             }
             return true;
-        }
-        public void ResetButton()
-        {
-                isPlayerAlive = true;
-                hasScared = true;
-                isStaredAt = false;
-                doorClosed = false;
-                senatorScreen = 3;
-                senatorMoveTick = 0;
-                frames = 0;
         }
         public void SenatorVoiceLine()
         {
