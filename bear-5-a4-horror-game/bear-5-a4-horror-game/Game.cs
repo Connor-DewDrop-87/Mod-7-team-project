@@ -55,29 +55,24 @@ namespace MohawkGame2D
                 Text.Draw("YOU DIED IN", new Vector2(200, 0));
             }
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            ScreenPosition = Camera.ShareScreenPosition();
-
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.KEY_M))
-            {
-                Audio.Play(Audio.LoadSound("Audio/First_Fantasy_OST 0.1.wav"));
-            }
-        }
             ScreenPosition = Player.ShareScreenPosition();
             // Draw and Update Movement of Senator
             Enemy.MoveSenator();
             Enemy.DrawSenator();
-            
+
             if (isAlive == true)
             {
                 MainDoor.DoorToggle();
             }
             if (ScreenPosition == 7)
             {
-                
+
             }
             ResetAll();
-
         }
+            
+
+        
         public void Rooms()
         {
             // Office Screen
@@ -144,12 +139,9 @@ namespace MohawkGame2D
                 
         }
         public void ResetButton()
-        {
-            
+        { 
                 isAlive = true;
-                
                 ScreenPosition=0;
-            
         }
 
 
@@ -158,4 +150,4 @@ namespace MohawkGame2D
 
 
     }
-}
+

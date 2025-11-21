@@ -122,13 +122,12 @@ namespace MohawkGame2D
         }
         public void ResetButton()
         {
-            
                 isPlayerAlive = true;
                 hasScared = true;
                 isStaredAt = false;
+                doorClosed = false;
                 senatorScreen = 3;
                 senatorMoveTick = 0;
-            
         }
     }
 }

@@ -12,7 +12,7 @@ namespace MohawkGame2D
     {
 
         // Place your variables here:
-        Music FF01 = Audio.LoadMusic("../../../../../Audio/(Audio/First_Fantasy_OST 0.1.wav"); 
+        Music FF01 = Audio.LoadMusic("../../../../../Audio/Audio/First_Fantasy_OST 0.1.wav"); 
         Music Cave = Audio.LoadMusic("../../../../../Audio/(Audio/Cave.wav"); 
         Music Chill = Audio.LoadMusic("../../../../../Audio/(Audio/Chill.wav"); 
         Music Credits = Audio.LoadMusic("../../../../../Audio/(Audio/credits music.wav"); 
