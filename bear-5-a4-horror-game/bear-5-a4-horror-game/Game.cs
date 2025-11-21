@@ -55,11 +55,7 @@ namespace MohawkGame2D
             {
                 Player.CameraButtons();
             }
-            if (isAlive == false)
-            {
-                Text.Color = textColor;
-                Text.Draw("YOU DIED IN", new Vector2(200, 0));
-            }
+            
             // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
             ScreenPosition = Player.ShareScreenPosition();
             // Draw and Update Movement of Senator
@@ -69,11 +65,19 @@ namespace MohawkGame2D
             // Draw and Update Movement of Murphy
             Enemy2.MoveMurphy();
             Enemy2.DrawMurphy();
-
             if (isAlive == true)
             {
                 MainDoor.DoorToggle();
             }
+            if (isAlive == false)
+            {
+                Draw.FillColor = Color.Black;
+                Draw.Square(new Vector2(0, 0), 800);
+                Text.Color = textColor;
+                Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                Player.CameraPosition();
+            }
+            
             
         }
             

@@ -14,6 +14,7 @@ namespace MohawkGame2D
         Camera Camera = new Camera();
         Doors DoorCheck = new Doors();
         OST murphySounds = new OST();
+        
         int cameraPosition;
         int murphyScreen = 3;
         Vector2 murphyPosition = new Vector2(300,400);
@@ -104,7 +105,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        murphyScreen = Random.Integer(0, 0);
+                        murphyScreen = Random.Integer(0, 6);
                     }     
                 }
             }
