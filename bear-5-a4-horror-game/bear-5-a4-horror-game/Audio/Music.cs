@@ -56,6 +56,11 @@ namespace MohawkGame2D
             {
                 Audio.Play(FF01);
             }
+            
+        }
+        public void OmeletteSound()
+        {
+            Audio.Play(Omelette);
         }
     }
 }
