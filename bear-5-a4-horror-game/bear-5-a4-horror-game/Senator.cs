@@ -67,6 +67,7 @@ namespace MohawkGame2D
             if (senatorScreen == 0)
             {
                 isPlayerAlive = false;
+                senatorSounds.RedSunSound();
                 if (frames < 24)
                 {
                     Graphics.Draw(senatorJumpScare[frames], 100, 100);
@@ -80,8 +81,11 @@ namespace MohawkGame2D
             else if (cameraPosition == senatorScreen)
             {
                Graphics.Draw(senator, senatorPosition);
-                isStaredAt = true;
-                senatorSounds.OmeletteSound();
+                if (isStaredAt==false)
+                {
+                    senatorSounds.OmeletteSound();
+                    isStaredAt = true;
+                }
             }
             else if (isStaredAt == true)
             {
@@ -105,7 +109,7 @@ namespace MohawkGame2D
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 6);
+                        senatorScreen = Random.Integer(0, 0);
                     }     
                 }
             }
@@ -126,6 +130,7 @@ namespace MohawkGame2D
                 doorClosed = false;
                 senatorScreen = 3;
                 senatorMoveTick = 0;
+                frames = 0;
         }
     }
 }

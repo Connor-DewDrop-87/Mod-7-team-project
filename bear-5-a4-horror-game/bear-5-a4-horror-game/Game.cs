@@ -30,8 +30,6 @@ namespace MohawkGame2D
         {
             Window.SetTitle("Albaquerque");
             Window.SetSize(800, 800);
-
-            Music.BackgroundMusic();
         }
 
         /// <summary>
@@ -45,7 +43,7 @@ namespace MohawkGame2D
             // Background Music
             if (isAlive)
             {
-                Music.BackgroundMusic();
+                
             }
             isAlive = Enemy.HasNotKilledPlayer();
             if (isAlive == true)

@@ -12,7 +12,7 @@ namespace MohawkGame2D
     {
 
         // Place your variables here:
-        Music FF01 = Audio.LoadMusic("../../../../../Audio/First_Fantasy_OST 0.1.wav");
+        
         Music Cave = Audio.LoadMusic("../../../../../Audio/Cave.wav");
         Music Chill = Audio.LoadMusic("../../../../../Audio/Chill.wav");
         Music Credits = Audio.LoadMusic("../../../../../Audio/credits music.wav");
@@ -50,18 +50,13 @@ namespace MohawkGame2D
         Music Pathetic = Audio.LoadMusic("../../../../../Audio/SunDowner/Pathetic.wav");
         Music ThisIsFun = Audio.LoadMusic("../../../../../Audio/SunDowner/ThisIsFun.wav");
         Music INVINCIBLE = Audio.LoadMusic("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
-
-        public void BackgroundMusic()
-        {
-            if (!Audio.IsPlaying(FF01))
-            {
-                Audio.Play(FF01);
-            }
-
-        }
         public void OmeletteSound()
         {
             Audio.Play(Omelette);
+        }
+        public void RedSunSound()
+        {
+            Audio.Play(Redsun);
         }
     }
 }
