@@ -10,6 +10,7 @@ namespace MohawkGame2D
 {
     public class OST
     {
+
         // Place your variables here:
         Music FF01 = Audio.LoadMusic("../../../../../Audio/First_Fantasy_OST 0.1.wav");
         Music Cave = Audio.LoadMusic("../../../../../Audio/Cave.wav");
@@ -57,6 +58,10 @@ namespace MohawkGame2D
                 Audio.Play(FF01);
             }
 
+        }
+        public void OmeletteSound()
+        {
+            Audio.Play(Omelette);
         }
     }
 }
