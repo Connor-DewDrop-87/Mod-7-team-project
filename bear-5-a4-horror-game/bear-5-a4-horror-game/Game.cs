@@ -50,7 +50,7 @@ namespace MohawkGame2D
                     openingSceneHasPlayed = true;
                 }
             }
-            if (openingSceneHasPlayed==true && timeInSeconds<3600)
+            if (openingSceneHasPlayed==true && timeInSeconds<360)
             {
                 Window.ClearBackground(Color.OffWhite);
                 Rooms();
@@ -77,9 +77,7 @@ namespace MohawkGame2D
                 if (isAlive == true)
                 {
                     MainDoor.DoorToggle();
-                    timeInSeconds += Time.DeltaTime;
-                    Text.Color = textColor;
-                    Text.Draw($"{timeInSeconds}", new Vector2(200, 0));
+                    CheckTime();
                 }
                 if (isAlive == false)
                 {
@@ -90,11 +88,11 @@ namespace MohawkGame2D
                     Player.CameraPosition();
                 }
             }
-            if (timeInSeconds>=3600)
+            if (timeInSeconds>=360)
             {
                 Window.ClearBackground(Color.OffWhite);
                 Text.Color = textColor;
-                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(200, 0));
+                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(200, 400));
             }
             
             
@@ -154,6 +152,41 @@ namespace MohawkGame2D
             if (ScreenPosition == 6)
             {
 
+            }
+        }
+
+        public void CheckTime()
+        {
+            timeInSeconds += Time.DeltaTime*10;
+            if ( timeInSeconds>=0 && timeInSeconds < 60)
+            {
+                Text.Color = textColor;
+                Text.Draw($"12AM", new Vector2(200, 0));
+            }
+            if ( timeInSeconds>=60 && timeInSeconds < 120)
+            {
+                Text.Color = textColor;
+                Text.Draw($"1AM", new Vector2(200, 0));
+            }
+            if ( timeInSeconds>=120 && timeInSeconds < 180)
+            {
+                Text.Color = textColor;
+                Text.Draw($"2AM", new Vector2(200, 0));
+            }
+            if ( timeInSeconds>=180 && timeInSeconds < 240)
+            {
+                Text.Color = textColor;
+                Text.Draw($"3AM", new Vector2(200, 0));
+            }
+            if ( timeInSeconds>=240 && timeInSeconds < 300)
+            {
+                Text.Color = textColor;
+                Text.Draw($"4AM", new Vector2(200, 0));
+            }
+            if ( timeInSeconds>=300 && timeInSeconds < 360)
+            {
+                Text.Color = textColor;
+                Text.Draw($"5AM", new Vector2(200, 0));
             }
         }
         
