@@ -157,7 +157,7 @@ namespace MohawkGame2D
 
         public void CheckTime()
         {
-            timeInSeconds += Time.DeltaTime*10;
+            timeInSeconds += Time.DeltaTime;
             if ( timeInSeconds>=0 && timeInSeconds < 60)
             {
                 Text.Color = textColor;
