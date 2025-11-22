@@ -21,6 +21,9 @@ namespace MohawkGame2D
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive;
         bool openingSceneHasPlayed = false;
+        // Timer to end game
+        bool hasReached6am = false;
+        float timeInSeconds = 0;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
@@ -47,16 +50,11 @@ namespace MohawkGame2D
                     openingSceneHasPlayed = true;
                 }
             }
-            if (openingSceneHasPlayed==true)
+            if (openingSceneHasPlayed==true && timeInSeconds<3600)
             {
                 Window.ClearBackground(Color.OffWhite);
                 Rooms();
                 Player.CameraPosition();
-                // Background Music
-                if (isAlive)
-                {
-
-                }
                 isAlive = Enemy.HasNotKilledPlayer();
                 if (isAlive == true)
                 {
@@ -79,6 +77,9 @@ namespace MohawkGame2D
                 if (isAlive == true)
                 {
                     MainDoor.DoorToggle();
+                    timeInSeconds += Time.DeltaTime;
+                    Text.Color = textColor;
+                    Text.Draw($"{timeInSeconds}", new Vector2(200, 0));
                 }
                 if (isAlive == false)
                 {
@@ -88,6 +89,12 @@ namespace MohawkGame2D
                     Text.Draw("YOU DIED IN", new Vector2(200, 0));
                     Player.CameraPosition();
                 }
+            }
+            if (timeInSeconds>=3600)
+            {
+                Window.ClearBackground(Color.OffWhite);
+                Text.Color = textColor;
+                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(200, 0));
             }
             
             
