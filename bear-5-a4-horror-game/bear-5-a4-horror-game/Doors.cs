@@ -14,6 +14,9 @@ namespace MohawkGame2D
         bool doorClosed = false;
         // Power on is true, Power off is false
         bool powerIsOn = true;
+        // Power
+        int currentPower = 100;
+        float powerDrainTick = 0;
         public void CreateDoor(Vector2 doorCentreUpper, Vector2 doorCentreLower, Vector2 offSetR, Vector2 offSetL)
         {
             Draw.FillColor = Color.LightGray;
@@ -64,12 +67,27 @@ namespace MohawkGame2D
         }
         public bool CheckPowerStatus()
         {
+            Text.Draw($"{currentPower}", new Vector2(200, 200));
+            if (powerIsOn == true)
+            {
+                powerDrainTick += Time.DeltaTime;
+                if (powerDrainTick >= 10)
+                {
+                    powerDrainTick = 0;
+                    currentPower -= 10;
+                }
+                if (currentPower==0)
+                {
+                    powerIsOn = false;
+                }
+            }
             if (powerIsOn == false)
             {
                 doorClosed = false;
             }
             return powerIsOn;
         }
+        
         
     }
 }
