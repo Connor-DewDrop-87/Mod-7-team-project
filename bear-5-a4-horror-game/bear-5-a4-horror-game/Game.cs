@@ -20,6 +20,7 @@ namespace MohawkGame2D
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive;
+        bool openingSceneHasPlayed = false;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
@@ -38,44 +39,55 @@ namespace MohawkGame2D
         /// </summary>
         public void Update()
         {
-            Window.ClearBackground(Color.OffWhite);
-            Rooms();
-            Player.CameraPosition();
-            // Background Music
-            if (isAlive)
+            if (openingSceneHasPlayed==false)
             {
-                
+                Music.OpeningScene();
+                if (Music.OpeningScene() == false)
+                {
+                    openingSceneHasPlayed = true;
+                }
             }
-            isAlive = Enemy.HasNotKilledPlayer();
-            if (isAlive==true)
+            if (openingSceneHasPlayed==true)
             {
-                isAlive = Enemy2.HasNotKilledPlayer();
-            }
-            if (isAlive == true)
-            {
-                Player.CameraButtons();
-            }
-            
-            // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            ScreenPosition = Player.ShareScreenPosition();
-            // Draw and Update Movement of Senator
-            Enemy.MoveSenator();
-            Enemy.DrawSenator();
-
-            // Draw and Update Movement of Murphy
-            Enemy2.MoveMurphy();
-            Enemy2.DrawMurphy();
-            if (isAlive == true)
-            {
-                MainDoor.DoorToggle();
-            }
-            if (isAlive == false)
-            {
-                Draw.FillColor = Color.Black;
-                Draw.Square(new Vector2(0, 0), 800);
-                Text.Color = textColor;
-                Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                Window.ClearBackground(Color.OffWhite);
+                Rooms();
                 Player.CameraPosition();
+                // Background Music
+                if (isAlive)
+                {
+
+                }
+                isAlive = Enemy.HasNotKilledPlayer();
+                if (isAlive == true)
+                {
+                    isAlive = Enemy2.HasNotKilledPlayer();
+                }
+                if (isAlive == true)
+                {
+                    Player.CameraButtons();
+                }
+
+                // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
+                ScreenPosition = Player.ShareScreenPosition();
+                // Draw and Update Movement of Senator
+                Enemy.MoveSenator();
+                Enemy.DrawSenator();
+
+                // Draw and Update Movement of Murphy
+                Enemy2.MoveMurphy();
+                Enemy2.DrawMurphy();
+                if (isAlive == true)
+                {
+                    MainDoor.DoorToggle();
+                }
+                if (isAlive == false)
+                {
+                    Draw.FillColor = Color.Black;
+                    Draw.Square(new Vector2(0, 0), 800);
+                    Text.Color = textColor;
+                    Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                    Player.CameraPosition();
+                }
             }
             
             

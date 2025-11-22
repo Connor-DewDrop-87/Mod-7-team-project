@@ -50,6 +50,7 @@ namespace MohawkGame2D
         Sound Pathetic = Audio.LoadSound("../../../../../Audio/SunDowner/Pathetic.wav");
         Sound ThisIsFun = Audio.LoadSound("../../../../../Audio/SunDowner/ThisIsFun.wav");
         Sound INVINCIBLE = Audio.LoadSound("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
+        bool hasPlayedOpeningSound=false;
         
         public void OmeletteSound()
         {
@@ -62,6 +63,19 @@ namespace MohawkGame2D
         public void RedSunSound()
         {
             Audio.Play(Redsun);
+        }
+        public bool OpeningScene()
+        {
+            if (hasPlayedOpeningSound == false)
+            {
+                Audio.Play(INVINCIBLE);
+                hasPlayedOpeningSound = true;
+            }
+            if (Audio.IsPlaying(INVINCIBLE)==true)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
