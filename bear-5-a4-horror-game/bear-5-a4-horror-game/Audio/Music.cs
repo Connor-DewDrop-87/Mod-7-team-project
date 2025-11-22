@@ -50,11 +50,82 @@ namespace MohawkGame2D
         Sound Pathetic = Audio.LoadSound("../../../../../Audio/SunDowner/Pathetic.wav");
         Sound ThisIsFun = Audio.LoadSound("../../../../../Audio/SunDowner/ThisIsFun.wav");
         Sound INVINCIBLE = Audio.LoadSound("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
-        bool hasPlayedOpeningSound=false;
+        bool hasPlayedSound=false;
         
-        public void OmeletteSound()
+        public void SenatorVoiceLines(int SFX)
         {
-            Audio.Play(Omelette);
+            if (SFX == 1)
+            {
+                Audio.Play(Idiot);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(NanoMachines);
+            }
+            if (SFX == 3)
+            {
+                Audio.Play(SlimJim);
+            }
+            if (SFX == 4)
+            {
+                Audio.Play(ComeOn);
+            }
+            if (SFX == 5)
+            {
+                Audio.Play(Source);
+            }
+            if (SFX == 6)
+            {
+                Audio.Play(Omelette);
+            }
+            if (SFX == 7)
+            {
+                Audio.Play(AWhoop);
+            }
+            if (SFX == 7)
+            {
+                Audio.Play(UncleSam);
+            }
+            if (SFX == 8)
+            {
+                Audio.Play(Freak);
+            }
+            if (SFX == 9)
+            {
+                Audio.Play(DontGetCocky);
+            }
+            if (SFX == 10)
+            {
+                Audio.Play(GreatestFight);
+            }
+            if (SFX == 11)
+            {
+                Audio.Play(ILikeYouJack);
+            }
+            if (SFX == 12)
+            {
+                Audio.Play(LittleShit);
+            }
+            if (SFX == 13)
+            {
+                Audio.Play(ArmstrongHurt);
+            }
+            if (SFX == 14)
+            {
+                Audio.Play(ArmstrongSearch);
+            }
+            if (SFX == 15)
+            {
+                Audio.Play(WrathUSA);
+            }
+            if (SFX == 16)
+            {
+                Audio.Play(EnemyOfAmerica);
+            }
+            if (SFX == 17)
+            {
+                Audio.Play(HideAndSeek);
+            }
         }
         public void DontFuckSound()
         {
@@ -66,16 +137,20 @@ namespace MohawkGame2D
         }
         public bool OpeningScene()
         {
-            if (hasPlayedOpeningSound == false)
+            if (hasPlayedSound == false)
             {
                 Audio.Play(INVINCIBLE);
-                hasPlayedOpeningSound = true;
+                hasPlayedSound = true;
             }
-            if (Audio.IsPlaying(INVINCIBLE)==true)
+            if (Audio.IsPlaying(INVINCIBLE) == true)
             {
+
                 return true;
             }
-            return false;
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -89,7 +89,7 @@ namespace MohawkGame2D
                Graphics.Draw(senator, senatorPosition);
                 if (isStaredAt==false)
                 {
-                    senatorSounds.OmeletteSound();
+                    senatorSounds.SenatorVoiceLines(Random.Integer(1,17));
                     isStaredAt = true;
                 }
             }
@@ -102,7 +102,7 @@ namespace MohawkGame2D
         public void MoveSenator()
         {
             doorClosed = DoorCheck.CheckDoorStatus();
-            Text.Draw($"{doorClosed}", new Vector2(0, 200));
+            
             if (isPlayerAlive==true)
             {
                 senatorMoveTick += Random.Integer(5, 50)*Time.DeltaTime;
@@ -112,10 +112,12 @@ namespace MohawkGame2D
                     if (doorClosed==true && isStaredAt==false)
                     {
                         senatorScreen = Random.Integer(1, 6);
+                        senatorSounds.SenatorVoiceLines(17);
                     }
                     else if (isStaredAt==false)
                     {
                         senatorScreen = Random.Integer(0, 6);
+                        senatorSounds.SenatorVoiceLines(17);
                     }     
                 }
             }

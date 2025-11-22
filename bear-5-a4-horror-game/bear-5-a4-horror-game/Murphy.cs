@@ -79,8 +79,8 @@ namespace MohawkGame2D
                Graphics.Draw(murphy, murphyPosition);
                 if (isStaredAt==false)
                 {
-                    murphySounds.OmeletteSound();
                     isStaredAt = true;
+                    murphySounds.SenatorVoiceLines(Random.Integer(1, 17));
                 }
             }
             else if (isStaredAt == true)

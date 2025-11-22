@@ -19,7 +19,7 @@ namespace MohawkGame2D
         Murphy Enemy2 = new Murphy();
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
-        bool isAlive;
+        bool isAlive = true;
         bool openingSceneHasPlayed = false;
         // Timer to end game
         bool hasReached6am = false;
@@ -50,7 +50,7 @@ namespace MohawkGame2D
                     openingSceneHasPlayed = true;
                 }
             }
-            if (openingSceneHasPlayed==true && timeInSeconds<360)
+            if (openingSceneHasPlayed==true && timeInSeconds<360 && isAlive==true)
             {
                 Window.ClearBackground(Color.OffWhite);
                 Rooms();
@@ -60,11 +60,10 @@ namespace MohawkGame2D
                 {
                     isAlive = Enemy2.HasNotKilledPlayer();
                 }
-                if (isAlive == true)
-                {
-                    Player.CameraButtons();
-                }
-
+                Player.CameraButtons();
+                MainDoor.CheckPowerStatus();
+                int power = MainDoor.PowerUI();
+                Text.Draw($"{power}", new Vector2(200, 200));
                 // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
                 ScreenPosition = Player.ShareScreenPosition();
                 // Draw and Update Movement of Senator
@@ -74,19 +73,17 @@ namespace MohawkGame2D
                 // Draw and Update Movement of Murphy
                 Enemy2.MoveMurphy();
                 Enemy2.DrawMurphy();
-                if (isAlive == true)
-                {
-                    MainDoor.DoorToggle();
-                    CheckTime();
-                }
-                if (isAlive == false)
-                {
-                    Draw.FillColor = Color.Black;
-                    Draw.Square(new Vector2(0, 0), 800);
-                    Text.Color = textColor;
-                    Text.Draw("YOU DIED IN", new Vector2(200, 0));
-                    Player.CameraPosition();
-                }
+                MainDoor.DoorToggle();
+                CheckTime();
+                
+            }
+            if (isAlive==false)
+            {
+                Draw.FillColor = Color.Black;
+                Draw.Square(new Vector2(0, 0), 800);
+                Text.Color = textColor;
+                Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                Player.CameraPosition();
             }
             if (timeInSeconds>=360)
             {
