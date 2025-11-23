@@ -82,49 +82,88 @@ namespace MohawkGame2D
             {
                 Audio.Play(AWhoop);
             }
-            if (SFX == 7)
+            if (SFX == 8)
             {
                 Audio.Play(UncleSam);
             }
-            if (SFX == 8)
+            if (SFX == 9)
             {
                 Audio.Play(Freak);
             }
-            if (SFX == 9)
+            if (SFX == 10)
             {
                 Audio.Play(DontGetCocky);
             }
-            if (SFX == 10)
+            if (SFX == 11)
             {
                 Audio.Play(GreatestFight);
             }
-            if (SFX == 11)
+            if (SFX == 12)
             {
                 Audio.Play(ILikeYouJack);
             }
-            if (SFX == 12)
+            if (SFX == 13)
             {
                 Audio.Play(LittleShit);
             }
-            if (SFX == 13)
+            if (SFX == 14)
             {
                 Audio.Play(ArmstrongHurt);
             }
-            if (SFX == 14)
+            if (SFX == 15)
             {
                 Audio.Play(ArmstrongSearch);
             }
-            if (SFX == 15)
+            if (SFX == 16)
             {
                 Audio.Play(WrathUSA);
             }
-            if (SFX == 16)
+            if (SFX == 17)
             {
                 Audio.Play(EnemyOfAmerica);
             }
-            if (SFX == 17)
+            if (SFX == 18)
             {
                 Audio.Play(HideAndSeek);
+            }
+        }
+        public void SunDownerVoiceLines(int SFX)
+        {
+            if (SFX == 1)
+            {
+                Audio.Play(EvilLaugh);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(FeelPain);
+            }
+            if (SFX == 3)
+            {
+                Audio.Play(TakeMore);
+            }
+            if (SFX == 4)
+            {
+                Audio.Play(LoveThisShit);
+            }
+            if (SFX == 5)
+            {
+                Audio.Play(IdiotSD);
+            }
+            if (SFX == 6)
+            {
+                Audio.Play(Pathetic);
+            }
+            if (SFX == 7)
+            {
+                Audio.Play(AWhoop);
+            }
+            if (SFX == 8)
+            {
+                Audio.Play(ThisIsFun);
+            }
+            if (SFX == 9)
+            {
+                Audio.Play(INVINCIBLE);
             }
         }
         public void DontFuckSound()
