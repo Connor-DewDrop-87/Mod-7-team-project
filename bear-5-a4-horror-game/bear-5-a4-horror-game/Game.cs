@@ -63,7 +63,7 @@ namespace MohawkGame2D
                 Player.CameraButtons();
                 MainDoor.CheckPowerStatus();
                 int power = MainDoor.PowerUI();
-                Text.Draw($"{power}", new Vector2(200, 200));
+                Text.Draw($"Power:{power}", new Vector2(600, 0));
                 // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
                 ScreenPosition = Player.ShareScreenPosition();
                 // Draw and Update Movement of Senator
@@ -158,32 +158,32 @@ namespace MohawkGame2D
             if ( timeInSeconds>=0 && timeInSeconds < 60)
             {
                 Text.Color = textColor;
-                Text.Draw($"12AM", new Vector2(200, 0));
+                Text.Draw($"Time: 12AM", new Vector2(0, 0));
             }
             if ( timeInSeconds>=60 && timeInSeconds < 120)
             {
                 Text.Color = textColor;
-                Text.Draw($"1AM", new Vector2(200, 0));
+                Text.Draw($"Time: 1AM", new Vector2(0, 0));
             }
             if ( timeInSeconds>=120 && timeInSeconds < 180)
             {
                 Text.Color = textColor;
-                Text.Draw($"2AM", new Vector2(200, 0));
+                Text.Draw($"Time: 2AM", new Vector2(0, 0));
             }
             if ( timeInSeconds>=180 && timeInSeconds < 240)
             {
                 Text.Color = textColor;
-                Text.Draw($"3AM", new Vector2(200, 0));
+                Text.Draw($"Time: 3AM", new Vector2(0, 0));
             }
             if ( timeInSeconds>=240 && timeInSeconds < 300)
             {
                 Text.Color = textColor;
-                Text.Draw($"4AM", new Vector2(200, 0));
+                Text.Draw($"Time: 4AM", new Vector2(0, 0));
             }
             if ( timeInSeconds>=300 && timeInSeconds < 360)
             {
                 Text.Color = textColor;
-                Text.Draw($"5AM", new Vector2(200, 0));
+                Text.Draw($"Time: 5AM", new Vector2(0, 0));
             }
         }
         
