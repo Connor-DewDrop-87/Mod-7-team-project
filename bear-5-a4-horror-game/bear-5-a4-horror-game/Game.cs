@@ -17,6 +17,7 @@ namespace MohawkGame2D
         Camera Player = new Camera();
         Senator Enemy = new Senator();
         Murphy Enemy2 = new Murphy();
+        SunDowner Enemy3 = new SunDowner();
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive = true;
@@ -60,6 +61,10 @@ namespace MohawkGame2D
                 {
                     isAlive = Enemy2.HasNotKilledPlayer();
                 }
+                if (isAlive == true)
+                {
+                    isAlive = Enemy3.HasNotKilledPlayer();
+                }
                 Player.CameraButtons();
                 MainDoor.CheckPowerStatus();
                 int power = MainDoor.PowerUI();
@@ -69,11 +74,15 @@ namespace MohawkGame2D
                 // Draw and Update Movement of Senator
                 Enemy.MoveSenator();
                 Enemy.DrawSenator();
-
                 // Draw and Update Movement of Murphy
                 Enemy2.MoveMurphy();
                 Enemy2.DrawMurphy();
+                // Draw and Update Movement of SunDowner
+                Enemy3.MoveSunDowner();
+                Enemy3.DrawSunDowner();
+                // Player can open or close door
                 MainDoor.DoorToggle();
+                // Check the time to see if game is won
                 CheckTime();
                 
             }
