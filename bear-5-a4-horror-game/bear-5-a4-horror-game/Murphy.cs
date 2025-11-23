@@ -80,7 +80,7 @@ namespace MohawkGame2D
                 if (isStaredAt==false)
                 {
                     isStaredAt = true;
-                    murphySounds.SenatorVoiceLines(Random.Integer(1, 17));
+                    murphySounds.MurphyVoiceLines(2);
                 }
             }
             else if (isStaredAt == true)
@@ -101,10 +101,12 @@ namespace MohawkGame2D
                     if (doorClosed==true && isStaredAt==false)
                     {
                         murphyScreen = Random.Integer(1, 6);
+                        murphySounds.MurphyVoiceLines(1);
                     }
                     else if (isStaredAt==false)
                     {
                         murphyScreen = Random.Integer(0, 6);
+                        murphySounds.MurphyVoiceLines(1);
                     }     
                 }
             }

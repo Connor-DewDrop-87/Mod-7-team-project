@@ -166,6 +166,17 @@ namespace MohawkGame2D
                 Audio.Play(INVINCIBLE);
             }
         }
+        public void MurphyVoiceLines(int SFX)
+        {
+            if (SFX == 1)
+            {
+                Audio.Play(PipeSound);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(VineBoom);
+            }
+        }
         public void DontFuckSound()
         {
             Audio.Play(DontFuckWithMe);
