@@ -45,7 +45,7 @@ namespace MohawkGame2D
         
         public void DrawMurphy()
         {
-            Text.Draw($"{murphyMoveTick}", new Vector2(0, 0));
+            
             // Player can only switch camera while alive
             if (isPlayerAlive == true)
             {
@@ -92,10 +92,9 @@ namespace MohawkGame2D
         public void MoveMurphy()
         {
             doorClosed = DoorCheck.CheckDoorStatus();
-            Text.Draw($"{doorClosed}", new Vector2(0, 400));
             if (isPlayerAlive==true)
             {
-                murphyMoveTick += Random.Integer(5, 50)*Time.DeltaTime;
+                murphyMoveTick += Random.Integer(1, 20)*Time.DeltaTime;
                 if (murphyMoveTick >= 100)
                 {
                     murphyMoveTick = 0;

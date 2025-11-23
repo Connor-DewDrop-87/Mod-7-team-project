@@ -55,7 +55,7 @@ namespace MohawkGame2D
         
         public void DrawSenator()
         {
-            Text.Draw($"{senatorMoveTick}", new Vector2(0, 0));
+            
             // Player can only switch camera while alive
             if (isPlayerAlive == true)
             {
@@ -102,10 +102,9 @@ namespace MohawkGame2D
         public void MoveSenator()
         {
             doorClosed = DoorCheck.CheckDoorStatus();
-            
             if (isPlayerAlive==true)
             {
-                senatorMoveTick += Random.Integer(5, 50)*Time.DeltaTime;
+                senatorMoveTick += Random.Integer(3, 30)*Time.DeltaTime;
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;
