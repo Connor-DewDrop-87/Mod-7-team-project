@@ -27,30 +27,13 @@ namespace MohawkGame2D
         bool doorClosed;
         Texture2D sunDowner = Graphics.LoadTexture("../../../../../Assets/SunDowner.png");
         Texture2D[] sunDownerJumpScare = {
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_00_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_01_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_02_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_03_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_04_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_05_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_06_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_07_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_08_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_09_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_10_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_11_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_12_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_13_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_14_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_15_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_16_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_17_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_18_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_19_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_20_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_21_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_22_delay-0.04s.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_23_delay-0.04s.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado4.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado6.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado7.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado8.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado9.png"),
+            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado13.png"),
+            
             };
             
         
@@ -69,18 +52,18 @@ namespace MohawkGame2D
             if (sunDownerScreen == 0)
             {
                 isPlayerAlive = false;
-                sunDownerSounds.RedSunSound();
-                if (frames < 24)
+                sunDownerSounds.SunDownerVoiceLines(4);
+                if (frames < sunDownerJumpScare.Length)
                 {
                     Graphics.Draw(sunDownerJumpScare[(int)frames], 100, 100);
-                    frames += 0.5f;
+                    frames += 0.1f;
                 }
                 else
                 {
                     Graphics.Draw(sunDowner, 300, 100);
                     if (hasScared==false)
                     {
-                        sunDownerSounds.DontFuckSound();
+                        sunDownerSounds.RedSunSound();
                     }
                     hasScared = true;
                 }

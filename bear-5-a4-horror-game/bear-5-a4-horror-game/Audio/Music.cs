@@ -31,17 +31,18 @@ namespace MohawkGame2D
         Sound ArmstrongHurt = Audio.LoadSound("../../../../../Audio/ThatOneHurt.wav");
         Sound ArmstrongSearch = Audio.LoadSound("../../../../../Audio/WhereAreYou.wav");
         //Intercom Armstrong Audio
-        Sound UncleSam = Audio.LoadSound("../../../../../Audio/UncleSamNeedsToDieJack.wav");
-        Sound WrathUSA = Audio.LoadSound("../../../../../Audio/WrathOfTheUSA.wav");
+        Sound UncleSam = Audio.LoadSound("../../../../../Audio/Armstrong/UncleSamNeedsToDieJack.wav");
+        Sound WrathUSA = Audio.LoadSound("../../../../../Audio/Armstrong/WrathOfTheUSA.wav");
         Sound EnemyOfAmerica = Audio.LoadSound("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
         Sound HideAndSeek = Audio.LoadSound("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
         //Murphy Sound Effects
-        Sound PipeSound = Audio.LoadSound("../../../../../Audio/Armstrong/Metal_Pipe_Impace.wav");
-        Sound VineBoom = Audio.LoadSound("../../../../../Audio/vine-boom.wav");
-        Sound Car = Audio.LoadSound("../../../../../Audio/Scream1.wav");
-        Sound Laugh = Audio.LoadSound("../../../../../Audio/Laugh2.wav");
-        Sound Poggle = Audio.LoadSound("../../../../../Audio/BoomCloud.wav");
-        Sound Vine = Audio.LoadSound("../../../../../Audio/vine-boom.wav");
+        Sound PipeSound = Audio.LoadSound("../../../../../Audio/SoundEffects/Metal_Pipe_Impace.wav");
+        Sound VineBoom = Audio.LoadSound("../../../../../Audio/SoundEffects/vine-boom.wav");
+        Sound Car = Audio.LoadSound("../../../../../Audio//SoundEffects/Scream1.wav");
+        Sound Laugh = Audio.LoadSound("../../../../../Audio/SoundEffects/Laugh2.wav");
+        Sound Poggle = Audio.LoadSound("../../../../../Audio/SoundEffects/BoomCloud.wav");
+        Sound Dingy = Audio.LoadSound("../../../../../Audio/SoundEffects/ding-sound-effect_2.wav");
+        
         //Sundown Audio Files
         Music Redsun = Audio.LoadMusic("../../../../../Audio/SunDowner/Redsun.wav");
         Sound EvilLaugh = Audio.LoadSound("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
@@ -195,7 +196,7 @@ namespace MohawkGame2D
             }
             if (SFX == 6)
             {
-                Audio.Play(Vine);
+                Audio.Play(Dingy);
             }
         }
         public void DoorSlam(int SFX)
