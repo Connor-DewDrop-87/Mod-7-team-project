@@ -111,12 +111,12 @@ namespace MohawkGame2D
                     if (doorClosed==true && isStaredAt==false)
                     {
                         senatorScreen = Random.Integer(1, 6);
-                        senatorSounds.SenatorVoiceLines(17);
+                        senatorSounds.SenatorVoiceLines(18);
                     }
                     else if (isStaredAt==false)
                     {
                         senatorScreen = Random.Integer(0, 6);
-                        senatorSounds.SenatorVoiceLines(17);
+                        senatorSounds.SenatorVoiceLines(18);
                     }     
                 }
             }

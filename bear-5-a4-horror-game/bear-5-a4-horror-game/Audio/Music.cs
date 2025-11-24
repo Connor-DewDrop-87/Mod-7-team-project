@@ -50,6 +50,9 @@ namespace MohawkGame2D
         Sound Pathetic = Audio.LoadSound("../../../../../Audio/SunDowner/Pathetic.wav");
         Sound ThisIsFun = Audio.LoadSound("../../../../../Audio/SunDowner/ThisIsFun.wav");
         Sound INVINCIBLE = Audio.LoadSound("../../../../../Audio/SunDowner/IMFUCKINGINVINCIBLE.wav");
+        // Door SFX
+        Sound doorOpen = Audio.LoadSound("../../../../../Audio/SoundEffects/animatronic-in-door.wav");
+        Sound doorClosed = Audio.LoadSound("../../../../../Audio/SoundEffects/door-slamming-fnaf-1-sound-effects.wav");
         bool hasPlayedSound=false;
         
         public void SenatorVoiceLines(int SFX)
@@ -175,6 +178,17 @@ namespace MohawkGame2D
             if (SFX == 2)
             {
                 Audio.Play(VineBoom);
+            }
+        }
+        public void DoorSlam(int SFX)
+        {
+            if (SFX == 1)
+            {
+                Audio.Play(doorOpen);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(doorClosed);
             }
         }
         public void DontFuckSound()

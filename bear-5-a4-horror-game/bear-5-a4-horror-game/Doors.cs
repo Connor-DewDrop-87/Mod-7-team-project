@@ -10,6 +10,7 @@ namespace MohawkGame2D
 {
     public class Doors
     {
+        OST doorSounds = new OST();
         // Open is false, Closed is true
         bool doorClosed = false;
         // Power on is true, Power off is false
@@ -45,6 +46,14 @@ namespace MohawkGame2D
                 if (powerIsOn == true)
                 {
                     doorClosed = !doorClosed;
+                    if (doorClosed==true)
+                    {
+                        doorSounds.DoorSlam(1);
+                    }
+                    if (doorClosed==false)
+                    {
+                        doorSounds.DoorSlam(2);
+                    }
                 }
                 else
                 {
@@ -85,6 +94,7 @@ namespace MohawkGame2D
             if (powerIsOn == false)
             {
                 doorClosed = false;
+                doorSounds.DoorSlam(2);
             }
             return powerIsOn;
         }
