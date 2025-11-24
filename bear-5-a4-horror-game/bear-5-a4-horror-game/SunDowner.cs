@@ -17,11 +17,12 @@ namespace MohawkGame2D
         
         int cameraPosition;
         int sunDownerScreen=4;
-        Vector2 sunDownerPosition = new Vector2(300,200);
+        Vector2 sunDownerPosition = new Vector2(300,300);
         float sunDownerMoveTick=0;
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
+        bool powerStatus = true;
         float frames = 0;
         bool doorClosed;
         Texture2D sunDowner = Graphics.LoadTexture("../../../../../Assets/SunDowner.png");
@@ -101,6 +102,7 @@ namespace MohawkGame2D
         }
         public void MoveSunDowner()
         {
+            powerStatus = DoorCheck.CheckPowerStatus();
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {

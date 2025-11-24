@@ -22,6 +22,7 @@ namespace MohawkGame2D
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
+        bool powerStatus = true;
         float frames = 0;
         bool doorClosed;
         Texture2D murphy = Graphics.LoadTexture("../../../../../Assets/abral-officermurphy-idle-pose-color-rig.png");
@@ -91,6 +92,7 @@ namespace MohawkGame2D
         }
         public void MoveMurphy()
         {
+            powerStatus = DoorCheck.CheckPowerStatus();
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {

@@ -60,6 +60,10 @@ namespace MohawkGame2D
                     doorClosed = false;
                 }
             }
+            else if (powerIsOn == false)
+            {
+                doorClosed = false;
+            }
         }
         public bool CheckDoorStatus()
         {
@@ -80,7 +84,7 @@ namespace MohawkGame2D
         {
             if (powerIsOn == true && doorClosed == true)
             {
-                powerDrainTick += Time.DeltaTime;
+                powerDrainTick += Time.DeltaTime/6;
                 if (powerDrainTick >= 10)
                 {
                     powerDrainTick = 0;

@@ -22,6 +22,7 @@ namespace MohawkGame2D
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
+        bool powerStatus = true;
         float frames = 0;
         bool doorClosed;
         Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
@@ -101,6 +102,7 @@ namespace MohawkGame2D
         }
         public void MoveSenator()
         {
+            powerStatus = DoorCheck.CheckPowerStatus();
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {
@@ -108,16 +110,25 @@ namespace MohawkGame2D
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;
-                    if (doorClosed==true && isStaredAt==false)
+                    if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(1, 6);
+                        senatorScreen = Random.Integer(senatorScreen-1, senatorScreen+1);
                         senatorSounds.SenatorVoiceLines(18);
-                    }
-                    else if (isStaredAt==false)
-                    {
-                        senatorScreen = Random.Integer(0, 6);
-                        senatorSounds.SenatorVoiceLines(18);
-                    }     
+                        if (senatorScreen < 0)
+                        {
+                            senatorScreen = 6;
+                        }
+                        // If the door's open, Senator will always go inside it
+                        if (senatorScreen > 6 || senatorScreen == 0 || senatorScreen == 6)
+                        {
+                            senatorScreen = 0;
+                        }
+                        // Ensure Senator Doesn't go through door if closed
+                        if (doorClosed==true)
+                        {
+                            senatorScreen += Random.Integer(2,3);
+                        }
+                    } 
                 }
             }
         }
