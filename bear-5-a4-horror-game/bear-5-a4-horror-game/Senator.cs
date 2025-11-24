@@ -114,12 +114,12 @@ namespace MohawkGame2D
                     {
                         senatorScreen = Random.Integer(senatorScreen-2, senatorScreen+2);
                         senatorSounds.SenatorVoiceLines(18);
-                        // Ensures Senator doesn't go out of bounds
+                        // Ensures Senator doesn't go out of bounds when under 0
                         if (senatorScreen < 0)
                         {
                             senatorScreen = 6;
                         }
-                        // Ensures Senator doesn't go out of bounds
+                        // Ensures Senator doesn't go out of bounds when over 6
                         if (senatorScreen > 6)
                         {
                             senatorScreen = 0;

@@ -23,8 +23,11 @@ namespace MohawkGame2D
         bool isAlive = true;
         bool openingSceneHasPlayed = false;
         bool powerStatus = true;
+        // Kill Screen
+        bool hasClickedNoGod = false;
+        int textX = 0;
+        int textY = 0;
         // Timer to end game
-        bool hasReached6am = false;
         float timeInSeconds = 0;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
@@ -108,7 +111,33 @@ namespace MohawkGame2D
                 Draw.Square(new Vector2(0, 0), 800);
                 Text.Color = textColor;
                 Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                Text.Draw("Press Space to Enter Heaven", new Vector2(200, 200));
                 Player.CameraPosition();
+                if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+                {
+                    hasClickedNoGod = true;
+                }
+                if (hasClickedNoGod==true)
+                {
+                    for (int i = 0; i < 800; i++)
+                    {
+                        Text.Draw("THERE IS NO GOD!!!", new Vector2(textX+i, textY+i));
+
+                        if (textX > 800)
+                        {
+                            textX = 0;
+                        }
+                        if (textY > 800)
+                        {
+                            textY = 0;
+                            textX++;
+                        }
+                        else
+                        {
+                            textY++;
+                        }
+                    }
+                }
             }
             if (timeInSeconds>=360)
             {
