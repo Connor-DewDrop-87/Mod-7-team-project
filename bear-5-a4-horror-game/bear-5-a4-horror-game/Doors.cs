@@ -78,7 +78,7 @@ namespace MohawkGame2D
         }
         public bool CheckPowerStatus()
         {
-            if (powerIsOn == true)
+            if (powerIsOn == true && doorClosed == true)
             {
                 powerDrainTick += Time.DeltaTime;
                 if (powerDrainTick >= 10)
