@@ -104,7 +104,7 @@ namespace MohawkGame2D
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {
-                senatorMoveTick += Random.Integer(3, 30)*Time.DeltaTime;
+                senatorMoveTick += Random.Integer(10, 30)*Time.DeltaTime;
                 if (senatorMoveTick >= 100)
                 {
                     senatorMoveTick = 0;

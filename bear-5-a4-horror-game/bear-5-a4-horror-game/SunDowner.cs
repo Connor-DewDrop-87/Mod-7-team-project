@@ -104,7 +104,7 @@ namespace MohawkGame2D
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {
-                sunDownerMoveTick += Random.Integer(3, 30)*Time.DeltaTime;
+                sunDownerMoveTick += Random.Integer(1, 40)*Time.DeltaTime;
                 if (sunDownerMoveTick >= 100)
                 {
                     sunDownerMoveTick = 0;

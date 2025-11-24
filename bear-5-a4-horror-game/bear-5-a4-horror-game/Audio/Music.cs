@@ -37,9 +37,11 @@ namespace MohawkGame2D
         Sound WrathUSA = Audio.LoadSound("../../../../../Audio/WrathOfTheUSA.wav");
         Sound EnemyOfAmerica = Audio.LoadSound("../../../../../Audio/Armstrong/EnemyofAmerica.wav");
         Sound HideAndSeek = Audio.LoadSound("../../../../../Audio/Armstrong/HideAndSeekLilBitch.wav");
-        //Senator Armstrong Sound Effects
+        //Murphy Sound Effects
         Sound PipeSound = Audio.LoadSound("../../../../../Audio/Armstrong/Metal_Pipe_Impace.wav");
         Sound VineBoom = Audio.LoadSound("../../../../../Audio/vine-boom.wav");
+        Sound Car = Audio.LoadSound("../../../../../Audio/Scream1.wav");
+        Sound Laugh = Audio.LoadSound("../../../../../Audio/Laugh2.wav");
         //Sundown Audio Files
         Music Redsun = Audio.LoadMusic("../../../../../Audio/SunDowner/Redsun.wav");
         Sound EvilLaugh = Audio.LoadSound("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
