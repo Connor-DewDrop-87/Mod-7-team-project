@@ -16,12 +16,25 @@ namespace MohawkGame2D
         OST Music = new OST();
         Camera Player = new Camera();
         Senator Enemy = new Senator();
+        Murphy Enemy2 = new Murphy();
+        SunDowner Enemy3 = new SunDowner();
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
-        bool isAlive;
+        bool isAlive = true;
+        bool openingSceneHasPlayed = false;
+        bool powerStatus = true;
+        // Timer to end game
+        bool hasReached6am = false;
+        float timeInSeconds = 0;
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
+        Texture2D Office = Graphics.LoadTexture("../../../../../Assets/Office.png");
+        Texture2D HallwayA = Graphics.LoadTexture("../../../../../Assets/WestHallNoCamera.png");
+        Texture2D HallwayB = Graphics.LoadTexture("../../../../../Assets/Main_Hall.png");
+        Texture2D Vent = Graphics.LoadTexture("../../../../../Assets/Vent.png");
+        Texture2D PartyRoom = Graphics.LoadTexture("../../../../../Assets/RoomA.png");
+        Texture2D SafeRoom = Graphics.LoadTexture("../../../../../Assets/RoomB.png");
         Color textColor = new Color(0, 170, 245);
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -29,7 +42,7 @@ namespace MohawkGame2D
         public void Setup()
         {
             Window.SetTitle("Albaquerque");
-            Window.SetSize(800,800);
+            Window.SetSize(800, 800);
         }
 
         /// <summary>
@@ -37,69 +50,102 @@ namespace MohawkGame2D
         /// </summary>
         public void Update()
         {
-            Window.ClearBackground(Color.OffWhite);
-            Rooms();
-            Player.CameraPosition();
-            // Background Music
-            Music.BackgroundMusic();
-            isAlive = Enemy.HasNotKilledPlayer();
-            if (isAlive == true)
+            if (openingSceneHasPlayed==false)
             {
+                Music.OpeningScene();
+                if (Music.OpeningScene() == false)
+                {
+                    openingSceneHasPlayed = true;
+                }
+            }
+            if (openingSceneHasPlayed==true && timeInSeconds<360 && isAlive==true)
+            {
+                Window.ClearBackground(Color.OffWhite);
+                Rooms();
+                Player.CameraPosition();
+                isAlive = Enemy.HasNotKilledPlayer();
+                if (isAlive == true)
+                {
+                    isAlive = Enemy2.HasNotKilledPlayer();
+                }
+                if (isAlive == true)
+                {
+                    isAlive = Enemy3.HasNotKilledPlayer();
+                }
                 Player.CameraButtons();
-            }
-            if (isAlive == false)
-            {
-                Text.Color = textColor;
-                Text.Draw("YOU DIED IN", new Vector2(200, 0));
-            }
-            // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-            ScreenPosition = Player.ShareScreenPosition();
-            // Draw and Update Movement of Senator
-            Enemy.MoveSenator();
-            Enemy.DrawSenator();
-            
-            if (isAlive == true)
-            {
+                MainDoor.CheckPowerStatus();
+                powerStatus = MainDoor.CheckPowerStatus();
+                if (powerStatus==true)
+                {
+                    Music.BackgroundMusic(1);
+                }
+                if (powerStatus==false)
+                {
+                    Music.BackgroundMusic(2);
+                }
+                int power = MainDoor.PowerUI();
+                Text.Draw($"Power:{power}", new Vector2(600, 0));
+                // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
+                ScreenPosition = Player.ShareScreenPosition();
+                // Draw and Update Movement of Senator
+                Enemy.MoveSenator();
+                Enemy.DrawSenator();
+                // Draw and Update Movement of Murphy
+                Enemy2.MoveMurphy();
+                Enemy2.DrawMurphy();
+                // Draw and Update Movement of SunDowner
+                Enemy3.MoveSunDowner();
+                Enemy3.DrawSunDowner();
+                // Player can open or close door
                 MainDoor.DoorToggle();
-            }
-            if (ScreenPosition == 7)
-            {
+                // Check the time to see if game is won
+                CheckTime();
                 
             }
-            ResetAll();
-
+            if (isAlive==false)
+            {
+                Draw.FillColor = Color.Black;
+                Draw.Square(new Vector2(0, 0), 800);
+                Text.Color = textColor;
+                Text.Draw("YOU DIED IN", new Vector2(200, 0));
+                Player.CameraPosition();
+            }
+            if (timeInSeconds>=360)
+            {
+                Window.ClearBackground(Color.OffWhite);
+                Music.BackgroundMusic(3);
+                // Create the you win screen with credits
+                Text.Color = textColor;
+                Text.Draw($"6AM!!! YOU WIN!!! Credits:", new Vector2(100, 300));
+                Text.Draw($"Connor Almeyda (Programmer)", new Vector2(100, 400));
+                Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(100, 450));
+                Text.Draw($"Aidan Thomas (Asset Designer and Scratch Reference Maker)", new Vector2(100, 500));
+            }
+            
+            
         }
+            
+
+        
         public void Rooms()
         {
             // Office Screen
             if (ScreenPosition == 0)
             {
-                // Door Void
-                Draw.FillColor = Color.Black;
-                Draw.Rectangle(new Vector2(240, 120), new Vector2(320, 240));
+                Graphics.Draw(Office, 0, 0);
                 // Door
-                MainDoor.CreateDoor(new Vector2(400, 120), new Vector2(400, 360), new Vector2(160, 0), new Vector2(160, 0));
-                // Desk
-                Draw.FillColor = brown;
-                Draw.Rectangle(new Vector2(40, 600), new Vector2(720, 120));
-                // Wall outlines to add depth
-                Draw.Line(new Vector2(0, 540), new Vector2(160, 360));
-                Draw.Line(new Vector2(800, 520), new Vector2(640, 360));
-                Draw.Line(new Vector2(160, 0), new Vector2(160, 360));
-                Draw.Line(new Vector2(640, 0), new Vector2(640, 360));
-                Draw.Line(new Vector2(160, 360), new Vector2(640, 360));
-                float frames = Time.DeltaTime;
-                Text.Draw($"{frames}", new Vector2(300, 400));
+                MainDoor.CreateDoor(new Vector2(410, 184), new Vector2(410, 663), new Vector2(266, 0), new Vector2(266, 0));
+                
             }
-            // HallWayA Screen
+            // HallWayB Screen
             if (ScreenPosition == 1)
             {
-
+                Graphics.Draw(HallwayB, 0, 0);
             }
-            // RoomA Screen
+            // Safe Room Screen
             if (ScreenPosition == 2)
             {
-
+                Graphics.Draw(SafeRoom, 0, 0); 
             }
             // SenatorContainment Screen
             if (ScreenPosition == 3)
@@ -107,44 +153,64 @@ namespace MohawkGame2D
                 // Stage
                 Graphics.Draw(Pizzaria, 0,0);
             }
-            // RoomB Screen
+            // Partyroom Screen
             if (ScreenPosition == 4)
             {
-
+                Graphics.Draw(PartyRoom, 0, 0);
             }
             // Vent Screen
             if (ScreenPosition == 5)
             {
-
+                Graphics.Draw(Vent, 0, 0);
             }
-            // HallwayB Screen
+            // HallwayA Screen
             if (ScreenPosition == 6)
             {
+                Graphics.Draw(HallwayA, 0, 0);
+            }
+        }
 
-            }
-        }
-        public void ResetAll()
+        public void CheckTime()
         {
-            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
+            timeInSeconds += Time.DeltaTime;
+            if ( timeInSeconds>=0 && timeInSeconds < 60)
             {
-                Player.ResetButton();
-                MainDoor.ResetButton();
-                Enemy.ResetButton();
-                ResetButton();
+                Text.Color = textColor;
+                Text.Draw($"Time: 12AM", new Vector2(0, 0));
             }
-                
+            if ( timeInSeconds>=60 && timeInSeconds < 120)
+            {
+                Text.Color = textColor;
+                Text.Draw($"Time: 1AM", new Vector2(0, 0));
+            }
+            if ( timeInSeconds>=120 && timeInSeconds < 180)
+            {
+                Text.Color = textColor;
+                Text.Draw($"Time: 2AM", new Vector2(0, 0));
+            }
+            if ( timeInSeconds>=180 && timeInSeconds < 240)
+            {
+                Text.Color = textColor;
+                Text.Draw($"Time: 3AM", new Vector2(0, 0));
+            }
+            if ( timeInSeconds>=240 && timeInSeconds < 300)
+            {
+                Text.Color = textColor;
+                Text.Draw($"Time: 4AM", new Vector2(0, 0));
+            }
+            if ( timeInSeconds>=300 && timeInSeconds < 360)
+            {
+                Text.Color = textColor;
+                Text.Draw($"Time: 5AM", new Vector2(0, 0));
+            }
         }
-        public void ResetButton()
-        {
-            
-                isAlive = true;
-                
-                ScreenPosition=0;
-            
-        }
+        
+       
 
 
 
     }
 
-}
+
+    }
+

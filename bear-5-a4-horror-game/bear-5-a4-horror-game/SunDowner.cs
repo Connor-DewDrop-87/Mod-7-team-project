@@ -9,23 +9,23 @@ using System.Threading;
 
 namespace MohawkGame2D
 {
-    public class Senator
+    public class SunDowner
     {
         Camera Camera = new Camera();
         Doors DoorCheck = new Doors();
-        OST senatorSounds = new OST();
+        OST sunDownerSounds = new OST();
         
         int cameraPosition;
-        int senatorScreen=3;
-        Vector2 senatorPosition = new Vector2(300,200);
-        float senatorMoveTick=0;
+        int sunDownerScreen=3;
+        Vector2 sunDownerPosition = new Vector2(300,200);
+        float sunDownerMoveTick=0;
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
         float frames = 0;
         bool doorClosed;
-        Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
-        Texture2D[] senatorJumpScare = {
+        Texture2D sunDowner = Graphics.LoadTexture("../../../../../Assets/SunDowner.png");
+        Texture2D[] sunDownerJumpScare = {
             Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_00_delay-0.04s.png"),
             Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_01_delay-0.04s.png"),
             Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_02_delay-0.04s.png"),
@@ -53,7 +53,7 @@ namespace MohawkGame2D
             };
             
         
-        public void DrawSenator()
+        public void DrawSunDowner()
         {
             
             // Player can only switch camera while alive
@@ -65,31 +65,31 @@ namespace MohawkGame2D
              cameraPosition = Camera.ShareScreenPosition();
             // Draw Senator if the Player can see them
             
-            if (senatorScreen == 0)
+            if (sunDownerScreen == 0)
             {
                 isPlayerAlive = false;
-                senatorSounds.RedSunSound();
+                sunDownerSounds.RedSunSound();
                 if (frames < 24)
                 {
-                    Graphics.Draw(senatorJumpScare[(int)frames], 100, 100);
+                    Graphics.Draw(sunDownerJumpScare[(int)frames], 100, 100);
                     frames += 0.5f;
                 }
                 else
                 {
-                    Graphics.Draw(senator, 300, 100);
+                    Graphics.Draw(sunDowner, 300, 100);
                     if (hasScared==false)
                     {
-                        senatorSounds.DontFuckSound();
+                        sunDownerSounds.DontFuckSound();
                     }
                     hasScared = true;
                 }
             }
-            else if (cameraPosition == senatorScreen)
+            else if (cameraPosition == sunDownerScreen)
             {
-               Graphics.Draw(senator, senatorPosition);
+               Graphics.Draw(sunDowner, sunDownerPosition);
                 if (isStaredAt==false)
                 {
-                    senatorSounds.SenatorVoiceLines(Random.Integer(1,17));
+                    sunDownerSounds.SunDownerVoiceLines(Random.Integer(1,8));
                     isStaredAt = true;
                 }
             }
@@ -99,24 +99,24 @@ namespace MohawkGame2D
             }
 
         }
-        public void MoveSenator()
+        public void MoveSunDowner()
         {
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {
-                senatorMoveTick += Random.Integer(3, 30)*Time.DeltaTime;
-                if (senatorMoveTick >= 100)
+                sunDownerMoveTick += Random.Integer(3, 30)*Time.DeltaTime;
+                if (sunDownerMoveTick >= 100)
                 {
-                    senatorMoveTick = 0;
+                    sunDownerMoveTick = 0;
                     if (doorClosed==true && isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(1, 6);
-                        senatorSounds.SenatorVoiceLines(18);
+                        sunDownerScreen = Random.Integer(1, 6);
+                        sunDownerSounds.SunDownerVoiceLines(9);
                     }
                     else if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(0, 6);
-                        senatorSounds.SenatorVoiceLines(18);
+                        sunDownerScreen = Random.Integer(0, 6);
+                        sunDownerSounds.SunDownerVoiceLines(9);
                     }     
                 }
             }

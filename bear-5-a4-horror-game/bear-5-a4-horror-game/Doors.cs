@@ -10,14 +10,18 @@ namespace MohawkGame2D
 {
     public class Doors
     {
+        OST doorSounds = new OST();
         // Open is false, Closed is true
         bool doorClosed = false;
         // Power on is true, Power off is false
         bool powerIsOn = true;
+        // Power
+        int currentPower = 100;
+        float powerDrainTick = 0;
         public void CreateDoor(Vector2 doorCentreUpper, Vector2 doorCentreLower, Vector2 offSetR, Vector2 offSetL)
         {
             Draw.FillColor = Color.LightGray;
-            CheckPowerStatus();
+            
             // Door State Checker
             if (doorClosed)
             {
@@ -36,11 +40,20 @@ namespace MohawkGame2D
         }
         public void DoorToggle()
         {
+           
             if (Input.IsKeyboardKeyPressed(KeyboardInput.W))
             {
                 if (powerIsOn == true)
                 {
                     doorClosed = !doorClosed;
+                    if (doorClosed==true)
+                    {
+                        doorSounds.DoorSlam(1);
+                    }
+                    if (doorClosed==false)
+                    {
+                        doorSounds.DoorSlam(2);
+                    }
                 }
                 else
                 {
@@ -50,8 +63,9 @@ namespace MohawkGame2D
         }
         public bool CheckDoorStatus()
         {
+            Text.Draw($"{doorClosed}", new Vector2(0, 200));
             DoorToggle();
-            CheckPowerStatus();
+            powerIsOn = CheckPowerStatus();
             if (doorClosed == true)
             {
                 if (powerIsOn == true)
@@ -64,18 +78,32 @@ namespace MohawkGame2D
         }
         public bool CheckPowerStatus()
         {
+            if (powerIsOn == true && doorClosed == true)
+            {
+                powerDrainTick += Time.DeltaTime;
+                if (powerDrainTick >= 10)
+                {
+                    powerDrainTick = 0;
+                    currentPower -= 10;
+                }
+                if (currentPower==0)
+                {
+                    powerIsOn = false;
+                }
+            }
             if (powerIsOn == false)
             {
                 doorClosed = false;
+                doorSounds.DoorSlam(2);
             }
             return powerIsOn;
         }
-        public void ResetButton()
+
+        public int PowerUI()
         {
-            
-                doorClosed = false;
-                powerIsOn = true;
-            
+            return currentPower;
         }
+        
+        
     }
 }
