@@ -201,6 +201,10 @@ namespace MohawkGame2D
             {
                 Audio.Play(Cave);
             }
+            if (SFX == 3)
+            {
+                Audio.Play(Credits);
+            }
         }
         public void DontFuckSound()
         {

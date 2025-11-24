@@ -108,8 +108,13 @@ namespace MohawkGame2D
             if (timeInSeconds>=360)
             {
                 Window.ClearBackground(Color.OffWhite);
+                Music.BackgroundMusic(3);
+                // Create the you win screen with credits
                 Text.Color = textColor;
-                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(200, 400));
+                Text.Draw($"6AM!!! YOU WIN!!! Credits:", new Vector2(100, 300));
+                Text.Draw($"Connor Almeyda (Programmer)", new Vector2(100, 400));
+                Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(100, 450));
+                Text.Draw($"Aidan Thomas (Asset Designer)", new Vector2(100, 500));
             }
             
             
@@ -162,7 +167,7 @@ namespace MohawkGame2D
 
         public void CheckTime()
         {
-            timeInSeconds += Time.DeltaTime;
+            timeInSeconds += Time.DeltaTime*60;
             if ( timeInSeconds>=0 && timeInSeconds < 60)
             {
                 Text.Color = textColor;
