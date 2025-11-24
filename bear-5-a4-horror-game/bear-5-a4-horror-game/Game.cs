@@ -28,6 +28,7 @@ namespace MohawkGame2D
         Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
+        Texture2D Office = Graphics.LoadTexture("../../../../../Assets/Office.png");
         Color textColor = new Color(0, 170, 245);
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -111,22 +112,10 @@ namespace MohawkGame2D
             // Office Screen
             if (ScreenPosition == 0)
             {
-                // Door Void
-                Draw.FillColor = Color.Black;
-                Draw.Rectangle(new Vector2(240, 120), new Vector2(320, 240));
+                Graphics.Draw(Office, 0, 0);
                 // Door
-                MainDoor.CreateDoor(new Vector2(400, 120), new Vector2(400, 360), new Vector2(160, 0), new Vector2(160, 0));
-                // Desk
-                Draw.FillColor = brown;
-                Draw.Rectangle(new Vector2(40, 600), new Vector2(720, 120));
-                // Wall outlines to add depth
-                Draw.Line(new Vector2(0, 540), new Vector2(160, 360));
-                Draw.Line(new Vector2(800, 520), new Vector2(640, 360));
-                Draw.Line(new Vector2(160, 0), new Vector2(160, 360));
-                Draw.Line(new Vector2(640, 0), new Vector2(640, 360));
-                Draw.Line(new Vector2(160, 360), new Vector2(640, 360));
-                float frames = Time.DeltaTime;
-                Text.Draw($"{frames}", new Vector2(300, 400));
+                MainDoor.CreateDoor(new Vector2(410, 184), new Vector2(410, 663), new Vector2(266, 0), new Vector2(266, 0));
+                
             }
             // HallWayA Screen
             if (ScreenPosition == 1)
