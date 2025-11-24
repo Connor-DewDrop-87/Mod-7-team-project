@@ -22,6 +22,7 @@ namespace MohawkGame2D
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive = true;
         bool openingSceneHasPlayed = false;
+        bool powerStatus = true;
         // Timer to end game
         bool hasReached6am = false;
         float timeInSeconds = 0;
@@ -29,6 +30,11 @@ namespace MohawkGame2D
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
         Texture2D Office = Graphics.LoadTexture("../../../../../Assets/Office.png");
+        Texture2D HallwayA = Graphics.LoadTexture("../../../../../Assets/WestHallNoCamera.png");
+        Texture2D HallwayB = Graphics.LoadTexture("../../../../../Assets/Main_Hall.png");
+        Texture2D Vent = Graphics.LoadTexture("../../../../../Assets/Vent.png");
+        Texture2D PartyRoom = Graphics.LoadTexture("../../../../../Assets/RoomA.png");
+        Texture2D SafeRoom = Graphics.LoadTexture("../../../../../Assets/RoomB.png");
         Color textColor = new Color(0, 170, 245);
         /// <summary>
         ///     Setup runs once before the game loop begins.
@@ -68,6 +74,15 @@ namespace MohawkGame2D
                 }
                 Player.CameraButtons();
                 MainDoor.CheckPowerStatus();
+                powerStatus = MainDoor.CheckPowerStatus();
+                if (powerStatus==true)
+                {
+                    Music.BackgroundMusic(1);
+                }
+                if (powerStatus==false)
+                {
+                    Music.BackgroundMusic(2);
+                }
                 int power = MainDoor.PowerUI();
                 Text.Draw($"Power:{power}", new Vector2(600, 0));
                 // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
@@ -98,8 +113,13 @@ namespace MohawkGame2D
             if (timeInSeconds>=360)
             {
                 Window.ClearBackground(Color.OffWhite);
+                Music.BackgroundMusic(3);
+                // Create the you win screen with credits
                 Text.Color = textColor;
-                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(200, 400));
+                Text.Draw($"6AM!!! YOU WIN!!! Credits:", new Vector2(100, 300));
+                Text.Draw($"Connor Almeyda (Programmer)", new Vector2(100, 400));
+                Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(100, 450));
+                Text.Draw($"Aidan Thomas (Asset Designer and Scratch Reference Maker)", new Vector2(100, 500));
             }
             
             
@@ -117,15 +137,15 @@ namespace MohawkGame2D
                 MainDoor.CreateDoor(new Vector2(410, 184), new Vector2(410, 663), new Vector2(266, 0), new Vector2(266, 0));
                 
             }
-            // HallWayA Screen
+            // HallWayB Screen
             if (ScreenPosition == 1)
             {
-
+                Graphics.Draw(HallwayB, 0, 0);
             }
-            // RoomA Screen
+            // Safe Room Screen
             if (ScreenPosition == 2)
             {
-
+                Graphics.Draw(SafeRoom, 0, 0); 
             }
             // SenatorContainment Screen
             if (ScreenPosition == 3)
@@ -133,20 +153,20 @@ namespace MohawkGame2D
                 // Stage
                 Graphics.Draw(Pizzaria, 0,0);
             }
-            // RoomB Screen
+            // Partyroom Screen
             if (ScreenPosition == 4)
             {
-
+                Graphics.Draw(PartyRoom, 0, 0);
             }
             // Vent Screen
             if (ScreenPosition == 5)
             {
-
+                Graphics.Draw(Vent, 0, 0);
             }
-            // HallwayB Screen
+            // HallwayA Screen
             if (ScreenPosition == 6)
             {
-
+                Graphics.Draw(HallwayA, 0, 0);
             }
         }
 
