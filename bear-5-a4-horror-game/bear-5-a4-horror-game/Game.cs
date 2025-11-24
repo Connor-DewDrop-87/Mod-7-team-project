@@ -121,7 +121,7 @@ namespace MohawkGame2D
                 {
                     for (int i = 0; i < 800; i++)
                     {
-                        Text.Draw("THERE IS NO GOD!!!", new Vector2(textX+i, textY+i));
+                        Text.Draw("THERE IS NO GOD!!!", new Vector2(textX, textY));
 
                         if (textX > 800)
                         {
@@ -130,11 +130,11 @@ namespace MohawkGame2D
                         if (textY > 800)
                         {
                             textY = 0;
-                            textX++;
+                            textX+=i;
                         }
                         else
                         {
-                            textY++;
+                            textY+=i;
                         }
                     }
                 }
