@@ -112,19 +112,20 @@ namespace MohawkGame2D
                     senatorMoveTick = 0;
                     if (isStaredAt==false)
                     {
-                        senatorScreen = Random.Integer(senatorScreen-1, senatorScreen+1);
+                        senatorScreen = Random.Integer(senatorScreen-2, senatorScreen+2);
                         senatorSounds.SenatorVoiceLines(18);
+                        // Ensures Senator doesn't go out of bounds
                         if (senatorScreen < 0)
                         {
                             senatorScreen = 6;
                         }
-                        // If the door's open, Senator will always go inside it
-                        if (senatorScreen > 6 || senatorScreen == 0 || senatorScreen == 6)
+                        // Ensures Senator doesn't go out of bounds
+                        if (senatorScreen > 6)
                         {
                             senatorScreen = 0;
                         }
                         // Ensure Senator Doesn't go through door if closed
-                        if (doorClosed==true)
+                        if (doorClosed==true && senatorScreen == 0)
                         {
                             senatorScreen += Random.Integer(2,3);
                         }
