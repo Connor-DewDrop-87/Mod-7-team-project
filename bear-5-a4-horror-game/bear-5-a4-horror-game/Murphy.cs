@@ -16,7 +16,7 @@ namespace MohawkGame2D
         OST murphySounds = new OST();
         
         int cameraPosition;
-        int murphyScreen = 3;
+        int murphyScreen = Random.Integer(1,6);
         Vector2 murphyPosition = new Vector2(300,400);
         float murphyMoveTick = 0;
         bool isPlayerAlive = true;
@@ -80,7 +80,7 @@ namespace MohawkGame2D
                 if (isStaredAt==false)
                 {
                     isStaredAt = true;
-                    murphySounds.MurphyVoiceLines(2);
+                    murphySounds.MurphyVoiceLines(Random.Integer(2, 4));
                 }
             }
             else if (isStaredAt == true)

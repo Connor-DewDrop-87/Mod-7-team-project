@@ -16,7 +16,7 @@ namespace MohawkGame2D
         OST sunDownerSounds = new OST();
         
         int cameraPosition;
-        int sunDownerScreen=3;
+        int sunDownerScreen=4;
         Vector2 sunDownerPosition = new Vector2(300,200);
         float sunDownerMoveTick=0;
         bool isPlayerAlive = true;
