@@ -10,9 +10,7 @@ namespace MohawkGame2D
 {
     public class OST
     {
-
-        // Place your variables here:
-
+        // Main Music
         Music Cave = Audio.LoadMusic("../../../../../Audio/Cave.wav");
         Music Chill = Audio.LoadMusic("../../../../../Audio/Chill.wav");
         Music Credits = Audio.LoadMusic("../../../../../Audio/credits music.wav");
@@ -43,6 +41,7 @@ namespace MohawkGame2D
         Sound Car = Audio.LoadSound("../../../../../Audio/Scream1.wav");
         Sound Laugh = Audio.LoadSound("../../../../../Audio/Laugh2.wav");
         Sound Poggle = Audio.LoadSound("../../../../../Audio/BoomCloud.wav");
+        Sound Vine = Audio.LoadSound("../../../../../Audio/vine-boom.wav");
         //Sundown Audio Files
         Music Redsun = Audio.LoadMusic("../../../../../Audio/SunDowner/Redsun.wav");
         Sound EvilLaugh = Audio.LoadSound("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
@@ -193,6 +192,10 @@ namespace MohawkGame2D
             if (SFX == 5)
             {
                 Audio.Play(Poggle);
+            }
+            if (SFX == 6)
+            {
+                Audio.Play(Vine);
             }
         }
         public void DoorSlam(int SFX)

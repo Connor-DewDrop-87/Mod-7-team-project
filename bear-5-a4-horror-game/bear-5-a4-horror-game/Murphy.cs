@@ -81,7 +81,7 @@ namespace MohawkGame2D
                 if (isStaredAt==false)
                 {
                     isStaredAt = true;
-                    murphySounds.MurphyVoiceLines(Random.Integer(2, 4));
+                    murphySounds.MurphyVoiceLines(Random.Integer(2, 6));
                 }
             }
             else if (isStaredAt == true)

@@ -22,6 +22,8 @@ namespace MohawkGame2D
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive = true;
         bool openingSceneHasPlayed = false;
+        float frames = 0;
+        String[] loadingScene = { "Loading","Loading . ", "Loading . . ","Loading . . ." };
         bool powerStatus = true;
         // Kill Screen
         bool hasClickedNoGod = false;
@@ -29,7 +31,6 @@ namespace MohawkGame2D
         int textY = 0;
         // Timer to end game
         float timeInSeconds = 0;
-        Color brown = new Color(150, 75, 0);
         int ScreenPosition;
         Texture2D Pizzaria = Graphics.LoadTexture("../../../../../Assets/PizzaPlace.png");
         Texture2D Office = Graphics.LoadTexture("../../../../../Assets/Office.png");
@@ -55,7 +56,15 @@ namespace MohawkGame2D
         {
             if (openingSceneHasPlayed==false)
             {
+                Window.ClearBackground(Color.Black);
                 Music.OpeningScene();
+                Text.Color = textColor;
+                Text.Draw($"{loadingScene[(int)frames]}", new Vector2(300, 300));
+                frames+=0.5f;
+                if (frames > 3)
+                {
+                    frames = 0;
+                }
                 if (Music.OpeningScene() == false)
                 {
                     openingSceneHasPlayed = true;
@@ -231,6 +240,25 @@ namespace MohawkGame2D
             {
                 Text.Color = textColor;
                 Text.Draw($"Time: 5AM", new Vector2(0, 0));
+            }
+        }
+        public void OpeningSceneText(int frame)
+        {
+            if (frame == 0)
+            {
+                Text.Draw($"Loading", new Vector2(300, 400));
+            }
+            if (frame == 1)
+            {
+                Text.Draw($"Loading. ", new Vector2(300, 400));
+            }
+            if (frame == 2)
+            {
+                Text.Draw($"Loading. .", new Vector2(300, 400));
+            }
+            if (frame == 3)
+            {
+                
             }
         }
         
