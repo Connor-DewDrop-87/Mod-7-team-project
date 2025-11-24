@@ -22,6 +22,7 @@ namespace MohawkGame2D
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive = true;
         bool openingSceneHasPlayed = false;
+        bool powerStatus = true;
         // Timer to end game
         bool hasReached6am = false;
         float timeInSeconds = 0;
@@ -68,6 +69,15 @@ namespace MohawkGame2D
                 }
                 Player.CameraButtons();
                 MainDoor.CheckPowerStatus();
+                powerStatus = MainDoor.CheckPowerStatus();
+                if (powerStatus==true)
+                {
+                    Music.BackgroundMusic(1);
+                }
+                if (powerStatus==false)
+                {
+                    Music.BackgroundMusic(2);
+                }
                 int power = MainDoor.PowerUI();
                 Text.Draw($"Power:{power}", new Vector2(600, 0));
                 // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();

@@ -191,6 +191,17 @@ namespace MohawkGame2D
                 Audio.Play(doorClosed);
             }
         }
+        public void BackgroundMusic(int SFX)
+        {
+            if (SFX == 1)
+            {
+                Audio.Play(Chill);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(Cave);
+            }
+        }
         public void DontFuckSound()
         {
             Audio.Play(DontFuckWithMe);
@@ -199,6 +210,7 @@ namespace MohawkGame2D
         {
             Audio.Play(Redsun);
         }
+        
         public bool OpeningScene()
         {
             if (hasPlayedSound == false)
