@@ -12,7 +12,7 @@ namespace MohawkGame2D
     {
 
         // Place your variables here:
-        
+
         Music Cave = Audio.LoadMusic("../../../../../Audio/Cave.wav");
         Music Chill = Audio.LoadMusic("../../../../../Audio/Chill.wav");
         Music Credits = Audio.LoadMusic("../../../../../Audio/credits music.wav");
@@ -55,8 +55,8 @@ namespace MohawkGame2D
         // Door SFX
         Sound doorOpen = Audio.LoadSound("../../../../../Audio/SoundEffects/animatronic-in-door.wav");
         Sound doorClosed = Audio.LoadSound("../../../../../Audio/SoundEffects/door-slamming-fnaf-1-sound-effects.wav");
-        bool hasPlayedSound=false;
-        
+        bool hasPlayedSound = false;
+
         public void SenatorVoiceLines(int SFX)
         {
             if (SFX == 1)
@@ -216,7 +216,7 @@ namespace MohawkGame2D
         {
             Audio.Play(Redsun);
         }
-        
+
         public bool OpeningScene()
         {
             if (hasPlayedSound == false)
@@ -233,22 +233,7 @@ namespace MohawkGame2D
             {
                 return false;
             }
-        Music FF01 = Audio.LoadMusic("../../../../../Audio/(Audio/First_Fantasy_OST 0.1.wav");
-        Music Cave = Audio.LoadMusic("../../../../../Audio/(Audio/Cave.wav");
-        Music Chill = Audio.LoadMusic("../../../../../Audio/(Audio/Chill.wav");
-        Music Credits = Audio.LoadMusic("../../../../../Audio/(Audio/credits music.wav");
-        Music Redsun = Audio.LoadMusic("../../../../../Audio/(Audio//Armstrong/Redsun.wav");
-        Music Idiot = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/Senator Armstrong - Idiot.wav");
-        Music NanoMachines = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/_Senator - Nanomachines, Son.wav");
-        Music Omelette = Audio.LoadMusic("../../../../../Audio/(Audio/Armstrong/Making the mother of all omelettes here Jack.wav");
 
-
-        public void BackgroundMusic()
-        {
-            if (!Audio.IsPlaying(FF01))
-            {
-                Audio.Play(FF01);
-            }
         }
     }
 }
