@@ -157,7 +157,8 @@ namespace MohawkGame2D
                 Text.Draw($"6AM!!! YOU WIN!!! Credits:", new Vector2(100, 300));
                 Text.Draw($"Connor Almeyda (Programmer)", new Vector2(100, 400));
                 Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(100, 450));
-                Text.Draw($"Aidan Thomas (Asset Designer and Scratch Reference Maker)", new Vector2(100, 500));
+                Text.Draw($"Aidan Thomas (Asset and animation designer)", new Vector2(100, 500));
+                Text.Draw($"Aidan Thomas (Scratch reference maker)", new Vector2(100, 550));
             }
             
             

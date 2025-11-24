@@ -67,7 +67,6 @@ namespace MohawkGame2D
         }
         public bool CheckDoorStatus()
         {
-            Text.Draw($"{doorClosed}", new Vector2(0, 200));
             DoorToggle();
             powerIsOn = CheckPowerStatus();
             if (doorClosed == true)
