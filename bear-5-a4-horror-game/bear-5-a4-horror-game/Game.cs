@@ -60,7 +60,8 @@ namespace MohawkGame2D
                 Music.OpeningScene();
                 Text.Color = textColor;
                 // Loading Scene Animation
-                Text.Draw($"{loadingScene[(int)frames]}", new Vector2(300, 300));
+                Text.Draw($"{loadingScene[(int)frames]}", new Vector2(325, 300));
+                Text.Draw($"Press Space to Skip", new Vector2(250, 500));
                 frames+=0.2f;
                 if (frames > 4)
                 {
