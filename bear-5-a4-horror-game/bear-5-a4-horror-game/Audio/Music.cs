@@ -56,7 +56,8 @@ namespace MohawkGame2D
         // Door SFX
         Sound doorOpen = Audio.LoadSound("../../../../../Audio/SoundEffects/animatronic-in-door.wav");
         Sound doorClosed = Audio.LoadSound("../../../../../Audio/SoundEffects/door-slamming-fnaf-1-sound-effects.wav");
-        // Intro sound
+        // Intro audio
+        Sound IntroVoice = Audio.LoadSound("../../../../../Audio/Night1PhoneCall.wav");
         bool hasPlayedSound = false;
         
 
@@ -250,12 +251,16 @@ namespace MohawkGame2D
         {
             if (hasPlayedSound == false)
             {
-                Audio.Play(INVINCIBLE);
+                Audio.Play(IntroVoice);
                 hasPlayedSound = true;
             }
-            if (Audio.IsPlaying(INVINCIBLE) == true)
+            if (Input.IsKeyboardKeyPressed(KeyboardInput.Space))
             {
-
+                Audio.Stop(IntroVoice);
+                hasPlayedSound = true;
+            }
+            if (Audio.IsPlaying(IntroVoice) == true)
+            {
                 return true;
             }
             else
