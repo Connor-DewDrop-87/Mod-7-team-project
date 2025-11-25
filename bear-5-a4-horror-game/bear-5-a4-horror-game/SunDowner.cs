@@ -90,7 +90,7 @@ namespace MohawkGame2D
             if (isPlayerAlive==true)
             {
                 sunDownerMoveTick += Random.Integer(1, 40)*Time.DeltaTime;
-                if (sunDownerMoveTick >= 100)
+                if (sunDownerMoveTick >= 255)
                 {
                     sunDownerMoveTick = 0;
                     if (doorClosed==true && isStaredAt==false)

@@ -97,7 +97,7 @@ namespace MohawkGame2D
             if (isPlayerAlive==true)
             {
                 murphyMoveTick += Random.Integer(1, 20)*Time.DeltaTime;
-                if (murphyMoveTick >= 100)
+                if (murphyMoveTick >= 255)
                 {
                     murphyMoveTick = 0;
                     if (doorClosed==true && isStaredAt==false)

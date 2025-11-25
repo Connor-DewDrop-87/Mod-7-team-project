@@ -83,7 +83,7 @@ namespace MohawkGame2D
         {
             if (powerIsOn == true && doorClosed == true)
             {
-                powerDrainTick += Time.DeltaTime/3;
+                powerDrainTick += Time.DeltaTime/2;
                 if (powerDrainTick >= 10)
                 {
                     powerDrainTick = 0;

@@ -23,7 +23,7 @@ namespace MohawkGame2D
         bool isAlive = true;
         bool openingSceneHasPlayed = false;
         float frames = 0;
-        String[] loadingScene = { "Loading","Loading . ", "Loading . . ","Loading . . ." };
+        String[] loadingScene = { "Walking","Walking . ", "Walking . . ","Walking . . ." };
         bool powerStatus = true;
         // Kill Screen
         bool hasClickedNoGod = false;
@@ -60,8 +60,8 @@ namespace MohawkGame2D
                 Music.OpeningScene();
                 Text.Color = textColor;
                 Text.Draw($"{loadingScene[(int)frames]}", new Vector2(300, 300));
-                frames+=0.5f;
-                if (frames > 3)
+                frames+=0.2f;
+                if (frames > 4)
                 {
                     frames = 0;
                 }
