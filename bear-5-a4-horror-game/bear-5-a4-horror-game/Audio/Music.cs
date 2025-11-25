@@ -11,9 +11,9 @@ namespace MohawkGame2D
     public class OST
     {
         // Main Music
-        Music Cave = Audio.LoadMusic("../../../../../Audio/Cave.wav");
-        Music Chill = Audio.LoadMusic("../../../../../Audio/Chill.wav");
-        Music Credits = Audio.LoadMusic("../../../../../Audio/credits music.wav");
+        Music Cave = Audio.LoadMusic("../../../../../Audio/Music/Cave.wav");
+        Music Chill = Audio.LoadMusic("../../../../../Audio/Music/Chill.wav");
+        Music Credits = Audio.LoadMusic("../../../../../Audio/Music/creditsmusic.wav");
         //Senator Armstrong Audio Files
         Sound Idiot = Audio.LoadSound("../../../../../Audio/Armstrong/Senator Armstrong - Idiot.wav");
         Sound NanoMachines = Audio.LoadSound("../../../../../Audio/Armstrong/_Senator - Nanomachines, Son.wav");
@@ -56,7 +56,9 @@ namespace MohawkGame2D
         // Door SFX
         Sound doorOpen = Audio.LoadSound("../../../../../Audio/SoundEffects/animatronic-in-door.wav");
         Sound doorClosed = Audio.LoadSound("../../../../../Audio/SoundEffects/door-slamming-fnaf-1-sound-effects.wav");
+        // Intro sound
         bool hasPlayedSound = false;
+        
 
         public void SenatorVoiceLines(int SFX)
         {
@@ -223,6 +225,16 @@ namespace MohawkGame2D
             if (SFX == 3)
             {
                 Audio.Play(Credits);
+            }
+            // Stop Chill from over lapping with Cave and Credits
+            if (Audio.IsPlaying(Cave) || Audio.IsPlaying(Credits))
+            {
+                Audio.Stop(Chill);
+            }
+            // Stop Cave from over lapping with Credits
+            if (Audio.IsPlaying(Credits))
+            {
+                Audio.Stop(Cave);
             }
         }
         public void DontFuckSound()

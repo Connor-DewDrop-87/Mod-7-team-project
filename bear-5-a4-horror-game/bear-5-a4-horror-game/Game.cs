@@ -131,14 +131,13 @@ namespace MohawkGame2D
                     for (int i = 0; i < 800; i++)
                     {
                         Text.Draw("THERE IS NO GOD!!!", new Vector2(textX, textY));
-
                         if (textX > 800)
                         {
-                            textX = 0;
+                            textX = Random.Integer(0,800);
                         }
                         if (textY > 800)
                         {
-                            textY = 0;
+                            textY = Random.Integer(0, 800);
                             textX+=i;
                         }
                         else
@@ -154,11 +153,12 @@ namespace MohawkGame2D
                 Music.BackgroundMusic(3);
                 // Create the you win screen with credits
                 Text.Color = textColor;
-                Text.Draw($"6AM!!! YOU WIN!!! Credits:", new Vector2(100, 300));
-                Text.Draw($"Connor Almeyda (Programmer)", new Vector2(100, 400));
-                Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(100, 450));
-                Text.Draw($"Aidan Thomas (Asset and animation designer)", new Vector2(100, 500));
-                Text.Draw($"Aidan Thomas (Scratch reference maker)", new Vector2(100, 550));
+                Text.Draw($"6AM!!! YOU WIN!!!", new Vector2(250, 200));
+                Text.Draw($"Credits:", new Vector2(50, 350));
+                Text.Draw($"Connor Almeyda (Programmer)", new Vector2(50, 400));
+                Text.Draw($"Keaton Speers (Music and Sound Designer)", new Vector2(50, 450));
+                Text.Draw($"Aidan Thomas (Asset and Animation Designer)", new Vector2(50, 500));
+                Text.Draw($"Aidan Thomas (Scratch reference maker)", new Vector2(50, 550));
             }
             
             
@@ -211,7 +211,9 @@ namespace MohawkGame2D
 
         public void CheckTime()
         {
+            // Increase Timer
             timeInSeconds += Time.DeltaTime;
+            // Display Time to Player
             if ( timeInSeconds>=0 && timeInSeconds < 60)
             {
                 Text.Color = textColor;
