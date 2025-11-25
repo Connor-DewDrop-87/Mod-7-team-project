@@ -59,12 +59,14 @@ namespace MohawkGame2D
                 Window.ClearBackground(Color.Black);
                 Music.OpeningScene();
                 Text.Color = textColor;
+                // Loading Scene Animation
                 Text.Draw($"{loadingScene[(int)frames]}", new Vector2(300, 300));
                 frames+=0.2f;
                 if (frames > 4)
                 {
                     frames = 0;
                 }
+                // Check if the opening voice is complete
                 if (Music.OpeningScene() == false)
                 {
                     openingSceneHasPlayed = true;
@@ -73,20 +75,29 @@ namespace MohawkGame2D
             if (openingSceneHasPlayed==true && timeInSeconds<360 && isAlive==true)
             {
                 Window.ClearBackground(Color.OffWhite);
+                // Draw Rooms based on the player's position
                 Rooms();
+                // Get which Camera the player is on
+                ScreenPosition = Player.ShareScreenPosition();
                 Player.CameraPosition();
+                // Armstrong Checks if the player is alive or not
                 isAlive = Enemy.HasNotKilledPlayer();
+                // Murphy checks if the player is alive or not only if Armstrong hasn't killed already
                 if (isAlive == true)
                 {
                     isAlive = Enemy2.HasNotKilledPlayer();
                 }
+                // Murphy checks if the player is alive or not only if Armstrong and Murphy hasn't killed already
                 if (isAlive == true)
                 {
                     isAlive = Enemy3.HasNotKilledPlayer();
                 }
+                // Change Camera
                 Player.CameraButtons();
+                // Check the Power
                 MainDoor.CheckPowerStatus();
                 powerStatus = MainDoor.CheckPowerStatus();
+                // Change Music Based on the Power
                 if (powerStatus==true)
                 {
                     Music.BackgroundMusic(1);
@@ -97,8 +108,6 @@ namespace MohawkGame2D
                 }
                 int power = MainDoor.PowerUI();
                 Text.Draw($"Power:{power}", new Vector2(600, 0));
-                // If you need a screen position for where the monster is, then use Camera.ShareScreenPosition();
-                ScreenPosition = Player.ShareScreenPosition();
                 // Draw and Update Movement of Senator
                 Enemy.MoveSenator();
                 Enemy.DrawSenator();
@@ -128,6 +137,7 @@ namespace MohawkGame2D
                 }
                 if (hasClickedNoGod==true)
                 {
+                    // The funny
                     for (int i = 0; i < 800; i++)
                     {
                         Text.Draw("THERE IS NO GOD!!!", new Vector2(textX, textY));
@@ -243,25 +253,6 @@ namespace MohawkGame2D
             {
                 Text.Color = textColor;
                 Text.Draw($"Time: 5AM", new Vector2(0, 0));
-            }
-        }
-        public void OpeningSceneText(int frame)
-        {
-            if (frame == 0)
-            {
-                Text.Draw($"Loading", new Vector2(300, 400));
-            }
-            if (frame == 1)
-            {
-                Text.Draw($"Loading. ", new Vector2(300, 400));
-            }
-            if (frame == 2)
-            {
-                Text.Draw($"Loading. .", new Vector2(300, 400));
-            }
-            if (frame == 3)
-            {
-                
             }
         }
         

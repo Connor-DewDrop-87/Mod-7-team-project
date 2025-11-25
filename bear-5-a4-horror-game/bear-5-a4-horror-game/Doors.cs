@@ -86,11 +86,14 @@ namespace MohawkGame2D
                 powerDrainTick += Time.DeltaTime/2;
                 if (powerDrainTick >= 10)
                 {
+                    // Reset power
                     powerDrainTick = 0;
+                    // Decrease power
                     currentPower -= 10;
                 }
                 if (currentPower==0)
                 {
+                    // Kill power if power is gone
                     powerIsOn = false;
                 }
             }
