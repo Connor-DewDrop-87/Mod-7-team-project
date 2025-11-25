@@ -15,7 +15,9 @@ namespace MohawkGame2D
         {
             "OFFICE","HALLWAYA","ROOMA", "BRIDGE","ROOMB", "VENT", "HALLWAYB"
         };
+        
         Color textColor = new Color(0, 170, 245);
+        bool isCameraDestroyed = false;
         public void CameraPosition()
         {
             // Display Direction in Text

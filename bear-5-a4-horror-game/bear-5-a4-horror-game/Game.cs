@@ -18,6 +18,7 @@ namespace MohawkGame2D
         Senator Enemy = new Senator();
         Murphy Enemy2 = new Murphy();
         SunDowner Enemy3 = new SunDowner();
+        BlueEmoji Enemy4 = new BlueEmoji();
         Doors MainDoor = new Doors();
         // Check if Player is Alive. True means they are, false means they aren't
         bool isAlive = true;
@@ -88,10 +89,15 @@ namespace MohawkGame2D
                 {
                     isAlive = Enemy2.HasNotKilledPlayer();
                 }
-                // Murphy checks if the player is alive or not only if Armstrong and Murphy hasn't killed already
+                // Sundowner checks if the player is alive or not only if Armstrong and Murphy hasn't killed already
                 if (isAlive == true)
                 {
                     isAlive = Enemy3.HasNotKilledPlayer();
+                }
+                // Blue checks if the player is alive or not only if Armstrong, Murphy, and Sundowner hasn't killed already
+                if (isAlive == true)
+                {
+                    isAlive = Enemy4.HasNotKilledPlayer();
                 }
                 // Change Camera
                 Player.CameraButtons();
@@ -118,11 +124,14 @@ namespace MohawkGame2D
                 // Draw and Update Movement of SunDowner
                 Enemy3.MoveSunDowner();
                 Enemy3.DrawSunDowner();
+                // Draw and Update Movement of SunDowner
+                Enemy4.MoveBlue();
+                Enemy4.DrawBlue();
                 // Player can open or close door
                 MainDoor.DoorToggle();
                 // Check the time to see if game is won
                 CheckTime();
-                
+
             }
             if (isAlive==false)
             {

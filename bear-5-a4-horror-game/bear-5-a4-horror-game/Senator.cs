@@ -23,9 +23,15 @@ namespace MohawkGame2D
         bool hasScared = false;
         bool isStaredAt = false;
         bool powerStatus = true;
+        int armstrongSprites = 0;
+        int maybeShirtless = 0;
+        float staredMoveTick = 0;
         float frames = 0;
         bool doorClosed;
-        Texture2D senator = Graphics.LoadTexture("../../../../../Assets/thing.png");
+        Texture2D[] senator = {
+            Graphics.LoadTexture("../../../../../Assets/ArmstrongSprites/thing.png"),
+            Graphics.LoadTexture("../../../../../Assets/ArmstrongSprites/shirtless.png"),
+                };
         Texture2D[] senatorJumpScare = {
             Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_00_delay-0.04s.png"),
             Graphics.LoadTexture("../../../../../Jumpscares/Senatorjumpscare/frame_01_delay-0.04s.png"),
@@ -77,25 +83,36 @@ namespace MohawkGame2D
                 }
                 else
                 {
-                    Graphics.Draw(senator, 300, 100);
+                    Graphics.Draw(senator[armstrongSprites], 300, 100);
                     if (hasScared==false)
                     {
                         senatorSounds.DontFuckSound();
+                        
                     }
                     hasScared = true;
                 }
             }
             else if (cameraPosition == senatorScreen)
             {
-               Graphics.Draw(senator, senatorPosition);
+               Graphics.Draw(senator[armstrongSprites], senatorPosition);
                 if (isStaredAt==false)
                 {
                     senatorSounds.SenatorVoiceLines(Random.Integer(1,17));
+                    if (Random.Integer(1, 10) == 1)
+                    {
+                        armstrongSprites = 1;
+                    }
+                    else
+                    {
+                        armstrongSprites = 0;
+                    }
                     isStaredAt = true;
+                    maybeShirtless = Random.Integer(1, 10);
                 }
             }
             else if (isStaredAt == true)
             {
+                staredMoveTick = 0;
                 isStaredAt = false;
             }
 
@@ -141,5 +158,6 @@ namespace MohawkGame2D
             }
             return true;
         }
+        
     }
 }

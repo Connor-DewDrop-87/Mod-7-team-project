@@ -9,35 +9,39 @@ using System.Threading;
 
 namespace MohawkGame2D
 {
-    public class SunDowner
+    public class BlueEmoji
     {
         Camera Camera = new Camera();
         Doors DoorCheck = new Doors();
-        OST sunDownerSounds = new OST();
+        OST blueSounds = new OST();
         
         int cameraPosition;
-        int sunDownerScreen=4;
-        Vector2 sunDownerPosition = new Vector2(300,300);
-        float sunDownerMoveTick=0;
+        int blueScreen=4;
+        Vector2 bluePosition = new Vector2(300,300);
+        float blueMoveTick=0;
         bool isPlayerAlive = true;
         bool hasScared = false;
         bool isStaredAt = false;
         bool powerStatus = true;
         float frames = 0;
         bool doorClosed;
-        Texture2D sunDowner = Graphics.LoadTexture("../../../../../Assets/SunDowner.png");
-        Texture2D[] sunDownerJumpScare = {
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado4.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado6.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado7.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado8.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado9.png"),
-            Graphics.LoadTexture("../../../../../Jumpscares/Sundownerjumpscare/metal-gear-rising-desperado13.png"),
-            
-            };
-            
+        Texture2D blueScary = Graphics.LoadTexture("../../../../../Assets/teeth.png");
+        Texture2D[] blueTextures = {
+           Graphics.LoadTexture("../../../../../Assets/smug.png"),
+           Graphics.LoadTexture("../../../../../Assets/bat.png"),
+           Graphics.LoadTexture("../../../../../Assets/look.png"),
+           Graphics.LoadTexture("../../../../../Assets/snoop.png"),
+           Graphics.LoadTexture("../../../../../Assets/laugh.png"),
+           Graphics.LoadTexture("../../../../../Assets/happy.png"),
+           Graphics.LoadTexture("../../../../../Assets/determined.png"),
+           Graphics.LoadTexture("../../../../../Assets/mewing.png"),
         
-        public void DrawSunDowner()
+    };
+        int BlueEmojiChooser = Random.Integer(0, 7);
+
+
+
+        public void DrawBlue()
         {
             
             // Player can only switch camera while alive
@@ -49,31 +53,32 @@ namespace MohawkGame2D
              cameraPosition = Camera.ShareScreenPosition();
             // Draw Senator if the Player can see them
             
-            if (sunDownerScreen == 0)
+            if (blueScreen == 0)
             {
                 isPlayerAlive = false;
-                sunDownerSounds.SunDownerVoiceLines(4);
-                if (frames < sunDownerJumpScare.Length)
+                blueSounds.SunDownerVoiceLines(4);
+                if (frames < blueTextures.Length)
                 {
-                    Graphics.Draw(sunDownerJumpScare[(int)frames], 100, 100);
+                    Graphics.Draw(blueScary, 300, 100);
                     frames += 0.1f;
                 }
                 else
                 {
-                    Graphics.Draw(sunDowner, 300, 100);
+                    Graphics.Draw(blueScary, 300, 100);
                     if (hasScared==false)
                     {
-                        sunDownerSounds.RedSunSound();
+                        blueSounds.RedSunSound();
                     }
                     hasScared = true;
                 }
             }
-            else if (cameraPosition == sunDownerScreen)
+            else if (cameraPosition == blueScreen)
             {
-               Graphics.Draw(sunDowner, sunDownerPosition);
+                Graphics.Draw(blueTextures[BlueEmojiChooser], bluePosition);
                 if (isStaredAt==false)
                 {
-                    sunDownerSounds.SunDownerVoiceLines(Random.Integer(1,8));
+                    BlueEmojiChooser = Random.Integer(0, 7);
+                    blueSounds.SunDownerVoiceLines(Random.Integer(1,8));
                     isStaredAt = true;
                 }
             }
@@ -83,25 +88,25 @@ namespace MohawkGame2D
             }
 
         }
-        public void MoveSunDowner()
+        public void MoveBlue()
         {
             powerStatus = DoorCheck.CheckPowerStatus();
             doorClosed = DoorCheck.CheckDoorStatus();
             if (isPlayerAlive==true)
             {
-                sunDownerMoveTick += Random.Integer(1, 40)*Time.DeltaTime;
-                if (sunDownerMoveTick >= 125)
+                blueMoveTick += Random.Integer(1, 100)*Time.DeltaTime;
+                if (blueMoveTick >= 255)
                 {
-                    sunDownerMoveTick = 0;
+                    blueMoveTick = 0;
                     if (doorClosed==true && isStaredAt==false)
                     {
-                        sunDownerScreen = Random.Integer(1, 6);
-                        sunDownerSounds.SunDownerVoiceLines(9);
+                        blueScreen = Random.Integer(1, 6);
+                        blueSounds.SunDownerVoiceLines(9);
                     }
                     else if (isStaredAt==false)
                     {
-                        sunDownerScreen = Random.Integer(0, 6);
-                        sunDownerSounds.SunDownerVoiceLines(9);
+                        blueScreen = Random.Integer(0, 6);
+                        blueSounds.SunDownerVoiceLines(9);
                     }     
                 }
             }
