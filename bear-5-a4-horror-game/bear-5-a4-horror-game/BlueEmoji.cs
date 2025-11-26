@@ -16,7 +16,7 @@ namespace MohawkGame2D
         OST blueSounds = new OST();
         
         int cameraPosition;
-        int blueScreen=4;
+        int blueScreen=2;
         Vector2 bluePosition = new Vector2(300,300);
         float blueMoveTick=0;
         bool isPlayerAlive = true;
@@ -56,7 +56,7 @@ namespace MohawkGame2D
             if (blueScreen == 0)
             {
                 isPlayerAlive = false;
-                blueSounds.SunDownerVoiceLines(4);
+                blueSounds.RedSunSound();
                 if (frames < blueTextures.Length)
                 {
                     Graphics.Draw(blueScary, 300, 100);
@@ -67,7 +67,7 @@ namespace MohawkGame2D
                     Graphics.Draw(blueScary, 300, 100);
                     if (hasScared==false)
                     {
-                        blueSounds.RedSunSound();
+                        blueSounds.EmojiSounds(1);
                     }
                     hasScared = true;
                 }
@@ -78,7 +78,19 @@ namespace MohawkGame2D
                 if (isStaredAt==false)
                 {
                     BlueEmojiChooser = Random.Integer(0, 7);
-                    blueSounds.SunDownerVoiceLines(Random.Integer(1,8));
+                    if (BlueEmojiChooser >= 0 && BlueEmojiChooser < 3)
+                    {
+                        blueSounds.SunDownerVoiceLines(Random.Integer(1, 8));
+                    }
+                    if (BlueEmojiChooser >= 3 && BlueEmojiChooser < 5)
+                    {
+                        blueSounds.SenatorVoiceLines(Random.Integer(1, 17));
+                    }
+                    if (BlueEmojiChooser>=5)
+                    {
+                        blueSounds.MurphyVoiceLines(Random.Integer(1, 6));
+                    }
+
                     isStaredAt = true;
                 }
             }
@@ -101,12 +113,12 @@ namespace MohawkGame2D
                     if (doorClosed==true && isStaredAt==false)
                     {
                         blueScreen = Random.Integer(1, 6);
-                        blueSounds.SunDownerVoiceLines(9);
+                        blueSounds.EmojiSounds(2);
                     }
                     else if (isStaredAt==false)
                     {
                         blueScreen = Random.Integer(0, 6);
-                        blueSounds.SunDownerVoiceLines(9);
+                        blueSounds.EmojiSounds(2);
                     }     
                 }
             }

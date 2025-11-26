@@ -42,7 +42,9 @@ namespace MohawkGame2D
         Sound Laugh = Audio.LoadSound("../../../../../Audio/SoundEffects/Laugh2.wav");
         Sound Poggle = Audio.LoadSound("../../../../../Audio/SoundEffects/BoomCloud.wav");
         Sound Dingy = Audio.LoadSound("../../../../../Audio/SoundEffects/ding-sound-effect_2.wav");
-        
+        // Blue Emoji Sounds
+        Sound Cackle = Audio.LoadSound("../../../../../Audio/SoundEffects/blueemojiinoffice.wav");
+        Sound DistortedCackle = Audio.LoadSound("../../../../../Audio/SoundEffects/blueemojimove.wav");
         //Sundown Audio Files
         Music Redsun = Audio.LoadMusic("../../../../../Audio/SunDowner/Redsun.wav");
         Sound EvilLaugh = Audio.LoadSound("../../../../../Audio/SunDowner/EvilAhhhLaugh.wav");
@@ -200,6 +202,17 @@ namespace MohawkGame2D
             if (SFX == 6)
             {
                 Audio.Play(Dingy);
+            }
+        }
+        public void EmojiSounds(int SFX)
+        {
+            if (SFX == 1)
+            {
+                Audio.Play(Cackle);
+            }
+            if (SFX == 2)
+            {
+                Audio.Play(DistortedCackle);
             }
         }
         public void DoorSlam(int SFX)

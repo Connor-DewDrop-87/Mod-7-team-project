@@ -70,7 +70,7 @@ namespace MohawkGame2D
                     Graphics.Draw(murphy, 500, 200);
                     if (hasScared==false)
                     {
-                        murphySounds.DontFuckSound();
+                        murphySounds.MurphyVoiceLines(1);
                     }
                     hasScared = true;
                 }
