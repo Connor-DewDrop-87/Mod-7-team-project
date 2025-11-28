@@ -93,16 +93,33 @@ namespace MohawkGame2D
                 if (sunDownerMoveTick >= 125)
                 {
                     sunDownerMoveTick = 0;
-                    if (doorClosed==true && isStaredAt==false)
+                    if (isStaredAt == false)
                     {
-                        sunDownerScreen = Random.Integer(1, 6);
+                        if (sunDownerScreen == 1 || sunDownerScreen == 6)
+                        {
+                            sunDownerScreen = 0;
+                        }
+                        else
+                        {
+                            sunDownerScreen = Random.Integer(sunDownerScreen - 1, sunDownerScreen + 1);
+                        }
                         sunDownerSounds.SunDownerVoiceLines(9);
+                        // Ensures Senator doesn't go out of bounds when under 0
+                        if (sunDownerScreen < 0)
+                        {
+                            sunDownerScreen = 6;
+                        }
+                        // Ensures Senator doesn't go out of bounds when over 6
+                        if (sunDownerScreen > 6)
+                        {
+                            sunDownerScreen = 0;
+                        }
+                        // Ensure Senator Doesn't go through door if closed
+                        if (doorClosed == true && sunDownerScreen == 0)
+                        {
+                            sunDownerScreen += Random.Integer(2, 3);
+                        }
                     }
-                    else if (isStaredAt==false)
-                    {
-                        sunDownerScreen = Random.Integer(0, 6);
-                        sunDownerSounds.SunDownerVoiceLines(9);
-                    }     
                 }
             }
         }
